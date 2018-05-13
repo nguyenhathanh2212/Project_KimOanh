@@ -1,0 +1,3 @@
+<div class="breadcrum" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+	<a href='http://www.diaockimoanh.com.vn/' title='Trang chủ' itemprop='url'><span itemprop='title'>Trang chủ</span></a><span class='separate'>></span><a href='250.html' title='Giới thiệu' itemprop='url'><span itemprop='title'>Giới thiệu</span></a><span class='separate'>></span><span class='active' itemprop='child' itemscope itemtype='http://data-vocabulary.org/Breadcrumb'>Thông điệp Tổng Giám Đốc</span>
+</div>
