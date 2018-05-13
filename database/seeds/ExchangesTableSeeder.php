@@ -11,7 +11,6 @@ class ExchangesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(App\Models\Exchange::class, 10)->create();
     }
 }

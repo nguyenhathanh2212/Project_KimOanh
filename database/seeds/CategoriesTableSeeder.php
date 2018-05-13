@@ -11,7 +11,6 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(App\Models\Category::class, 5)->create()->each(function($parent_cat){
             factory(App\Models\Category::class, 5)->create([
                 'parent_id' => $parent_cat->id,

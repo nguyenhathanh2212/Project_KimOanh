@@ -21,12 +21,14 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
         'parent_id' => 0,
         'name' => implode(' ', $faker->words(2))
     ];
 });
+
 $factory->define(App\Models\Picture::class, function (Faker $faker) {
     return [
         'category_id'=> rand(1, 5),
@@ -34,6 +36,7 @@ $factory->define(App\Models\Picture::class, function (Faker $faker) {
         'name'=> rand(1, 30) . '.jpg',
     ];
 });
+
 $factory->define(App\Models\Video::class, function (Faker $faker) {
     return [
     	'category_id'=> rand(1, 5),

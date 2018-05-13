@@ -11,7 +11,6 @@ class ActionNewsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(App\Models\ActionNews::class, 10)->create();
     }
 }

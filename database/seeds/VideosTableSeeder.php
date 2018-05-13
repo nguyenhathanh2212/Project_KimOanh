@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class VideoTableSeeder extends Seeder
+class VideosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class VideoTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(App\Models\Video::class, 5)->create();
     }
 }
