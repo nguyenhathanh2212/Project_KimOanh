@@ -10,23 +10,23 @@
     </li>
     <li class="li">
     </li>
-    <li>
-      <a target="_self" href="http://www.diaockimoanh.com.vn/hoat-dong-cong-ty/319">Hoạt động doanh nghiệp</a>
-    </li>
-    <li class="li">
+<!--     <li>
+  <a target="_self" href="http://www.diaockimoanh.com.vn/hoat-dong-cong-ty/319">Hoạt động doanh nghiệp</a>
+</li>
+<li class="li"> -->
     </li>
     <li>
       <a target="_self" href="http://www.diaockimoanh.com.vn/du-an/238">Dự án</a>
     </li>
     <li class="li">
     </li>
+<!--     <li>
+  <a class="bds" target="_self" href="http://www.diaockimoanh.com.vn/san-giao-dich/244">Sàn giao dịch</a>
+</li>
+<li class="li">
+</li> -->
     <li>
-      <a class="bds" target="_self" href="http://www.diaockimoanh.com.vn/san-giao-dich/244">Sàn giao dịch</a>
-    </li>
-    <li class="li">
-    </li>
-    <li>
-      <a target="_self" href="http://www.diaockimoanh.com.vn/tin-thi-truong-bds/248">Tin tức</a>
+      <a target="_self" href="{{ route('kimoanh.news')}}">Tin tức</a>
     </li>
     <li class="li">
     </li>

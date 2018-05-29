@@ -10,4 +10,3 @@
         @include('kimoanh.index.video')
       <div class="clear"></div>
     </div>
-    @include('kimoanh.index.batdongsan')

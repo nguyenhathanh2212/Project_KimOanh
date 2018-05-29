@@ -2,13 +2,19 @@
 	<h2><a target='_self' href='../dat-nen/240.html'>Đất nền</a></h2>
 	<div id="ctl00_cntMain_ctl00_rptZone_ctl00_ctl00_cntMain_ctl00_rptZone_ctl00_ctl00Panel">
 		<div id="ctl00_cntMain_ctl00_rptZone_ctl00_ctl00">
-			
 			<input type="hidden" name="ctl00$cntMain$ctl00$rptZone$ctl00$hdfZoneId" id="ctl00_cntMain_ctl00_rptZone_ctl00_hdfZoneId" value="240" />
 			<div class="row">
 				<a title="Khu đô thị Mega City 2" target="_self" href="../dat-nen/khu-do-thi-mega-city-2/240/4385.html">
 					<img width="220" src="../images/news/33/4385/can-canh-cong-chao.jpg" alt="Khu đô thị Mega City 2">
 				</a>
-				<div class="desc"><h1><a title="Khu đô thị Mega City 2" target="_self" href="../dat-nen/khu-do-thi-mega-city-2/240/4385.html">Khu đô thị Mega City 2</a></h1><span class="date">19/03/2018</span><p>Với định hướng trở thành “đô thị hạt nhân” của thành phố Nhơn Trạch, Mega City 2 hứa hẹn sẽ là nơi mang lại cuộc sống thịnh vượng và cơ hội đầu tư hấp dẫn nhất cho khách hàng.</p><a class="detail-h" title="Khu đô thị Mega City 2" target="_self" href="../dat-nen/khu-do-thi-mega-city-2/240/4385.html">Xem chi tiết</a></div>
+				<div class="desc">
+					<h1
+					><a title="Khu đô thị Mega City 2" target="_self" href="../dat-nen/khu-do-thi-mega-city-2/240/4385.html">Khu đô thị Mega City 2</a>
+				</h1>
+				<span class="date">19/03/2018</span>
+				<p>Với định hướng trở thành “đô thị hạt nhân” của thành phố Nhơn Trạch, Mega City 2 hứa hẹn sẽ là nơi mang lại cuộc sống thịnh vượng và cơ hội đầu tư hấp dẫn nhất cho khách hàng.</p>
+				<a class="detail-h" title="Khu đô thị Mega City 2" target="_self" href="../dat-nen/khu-do-thi-mega-city-2/240/4385.html">Xem chi tiết</a>
+			</div>
 			</div>
 			<div class="row">
 				<a title="Khu đô thị Golden Center City 3" target="_self" href="../dat-nen/khu-do-thi-golden-center-city-3/240/4186.html">
