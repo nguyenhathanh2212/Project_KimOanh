@@ -16,6 +16,9 @@ class CreateUtilitiesTable extends Migration
         Schema::create('utilities', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->longText('content');
+            $table->longText('title');
+            $table->integer('project_id');
         });
     }
 
