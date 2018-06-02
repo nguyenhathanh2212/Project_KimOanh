@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeProjectsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateTypeProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_projects', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->longText('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('fullname');
+            $table->rememberToken();
         });
     }
 
@@ -27,6 +30,6 @@ class CreateTypeProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_projects');
+        Schema::dropIfExists('users');
     }
 }

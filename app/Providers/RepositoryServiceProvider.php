@@ -27,9 +27,14 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\News\NewsInterface::class,
             \App\Repositories\News\NewsEloquentRepository::class
         );
-       $this->app->bind(
-            \App\Repositories\Category\CategoryInterface::class,
-            \App\Repositories\Category\CategoryEloquentRepository::class
+        $this->app->bind(
+            \App\Repositories\Project\ProjectInterface::class,
+            \App\Repositories\Project\ProjectEloquentRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Library\LibraryInterface::class,
+            \App\Repositories\Library\LibraryEloquentRepository::class
+        );
+       
     }
 }
