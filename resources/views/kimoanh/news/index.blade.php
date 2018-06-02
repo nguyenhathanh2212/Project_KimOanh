@@ -1,8 +1,7 @@
-@extends('templates.kimoanh.master')
-@section('content')
-<div class="news-home">
-	@include('templates.kimoanh.menubar')
+@extends('kimoanh.news.layout')
+@section('title')
+	News
+@endsection
+@section('content-news')
 	@include('kimoanh.news.content')
-</div>
-
 @endsection

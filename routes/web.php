@@ -11,19 +11,6 @@
 |
 */
 
-Route::get('/s', function () {
-    return view('kimoanh.project.index');
-});
-Route::namespace('KimOanh')->group(function () {
-	Route::resource('news', 'NewsController', [
-        'as' => 'kimoanh'
-    ]);
-    Route::post('news/', [
-        'as' => 'kimoanh.news',
-        'uses' => 'NewsController@index', 
-    ]);
-    Route::get('news/detail/{id}', [
-        'as' => 'kimoanh.news.detail',
-        'uses' => 'NewsController@show', 
-    ]);
+Route::get('/ss', function () {
+    return view('kimoanh.introduce.index');
 });
