@@ -16,6 +16,14 @@ class CreateOverViewsTable extends Migration
         Schema::create('over_views', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->longText('preview');
+            $table->longText('position');
+            $table->longText('investment');
+            $table->longText('area');
+            $table->longText('structure');
+            $table->longText('utility_local');
+            $table->longText('utility_link');
+            $table->longText('contract');
         });
     }
 

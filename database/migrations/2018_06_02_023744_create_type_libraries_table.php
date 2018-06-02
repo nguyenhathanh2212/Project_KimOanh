@@ -16,6 +16,7 @@ class CreateTypeLibrariesTable extends Migration
         Schema::create('type_libraries', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->longText('name');
         });
     }
 

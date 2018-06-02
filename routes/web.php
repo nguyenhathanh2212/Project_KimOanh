@@ -14,3 +14,7 @@
 Route::get('/ss', function () {
     return view('kimoanh.introduce.index');
 });
+Route::get('s', [
+    'as' => 'testNews',
+    'uses' => 'HomeController@getLibrariesByType', 
+]);

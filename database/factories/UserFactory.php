@@ -15,87 +15,85 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' =>  "secret",
+        'fullname'  =>  $faker->name,
         'remember_token' => str_random(10),
     ];
 });
 
-$factory->define(App\Models\Category::class, function (Faker $faker) {
+$factory->define(App\Models\Library::class, function (Faker $faker) {
     return [
-        'parent_id' => 0,
-        'name' => implode(' ', $faker->words(2))
+        'title' =>  $faker->text(rand(50, 100)),
     ];
 });
 
 $factory->define(App\Models\Picture::class, function (Faker $faker) {
     return [
-        'category_id'=> rand(1, 5),
-        'product_id'=> rand(1, 10),
         'name'=> rand(1, 30) . '.jpg',
     ];
 });
 
 $factory->define(App\Models\Video::class, function (Faker $faker) {
     return [
-    	'category_id'=> rand(1, 5),
-        'product_id'=> rand(1, 10),
         'name'=> rand(1, 30) . '.mp3',
-    ];
-});
-
-$factory->define(App\Models\ActionNews::class, function (Faker $faker) {
-    return [
-    	'category_id'=> rand(5, 10),
-        'picture_id'=> rand(1, 10),
-        'title'=> $faker->text(rand(50, 100)),
-        'preview'=> $faker->text(rand(100, 200)),
-        'content'=> $faker->text(rand(1000, 2000))
     ];
 });
 
 $factory->define(App\Models\News::class, function (Faker $faker) {
     return [
-    	'category_id'=> rand(5, 10),
-        'picture_id'=> rand(1, 10),
         'title'=> $faker->text(rand(50, 100)),
-        'preview'=> $faker->text(rand(100, 200)),
-        'content'=> $faker->text(rand(1000, 2000))
+        'preview'=> $faker->text(rand(50, 100)),
+        'content'=> $faker->text(rand(50, 100))
     ];
 });
 
-$factory->define(App\Models\Exchange::class, function (Faker $faker) {
+$factory->define(App\Models\OverView::class, function (Faker $faker) {
     return [
-    	'category_id'=> rand(5, 10),
-        'picture_id'=> rand(1, 10),
-        'title'=> $faker->text(rand(50, 100)),
-        'content'=> $faker->text(rand(1000, 2000)),
-        'title_price'=> rand(1000, 2000) . ' VND',
-        'location'=> $faker->address,
-        'owner'=> $faker->text(10),
-        'kind_of'=> $faker->text(10),
-        'legal_status'=> $faker->text(10),
-        'area_used'=> rand(1000, 2000) . ' m3',
-        'direction'=> $faker->text(20),
-        'contact'=> $faker->e164PhoneNumber,
+        'preview'=> $faker->text(rand(50, 100)),
+        'position'=> $faker->text(rand(50, 100)),
+        'investment'=> $faker->text(rand(50, 100)),
+        'area'=> $faker->text(rand(50, 100)),
+        'structure'=> $faker->text(rand(50, 100)),
+        'utility_local'=> $faker->text(rand(50, 100)),
+        'utility_link'=> $faker->text(rand(50, 100)),
+        'contract'=> $faker->text(rand(50, 100)),
     ];
 });
 
 $factory->define(App\Models\Project::class, function (Faker $faker) {
     return [
-    	'category_id'=> rand(5, 10),
-        'picture_id'=> rand(1, 10),
-        'picture_real_id'=> rand(1, 10),
-        'video_id'=> rand(1, 10),
         'title'=> $faker->text(rand(50, 100)),
-        'review'=> $faker->text(rand(100, 200)),
-        'content_overview'=> $faker->text(rand(100, 200)),
-        'content_position'=> $faker->address,
-        'content_distribution'=> $faker->text(rand(100, 200)),
-        'content_cataloque'=> $faker->text(rand(50, 100)),
-        // 'content_contact '=> $faker->text(rand(50, 100)) . $faker->e164PhoneNumber,
-
-
+        'preview'=> $faker->text(rand(50, 100)),
+        'preview'=> $faker->text(rand(50, 100)),
+        'overview_id'=> 1,
+        'video_id'=> 1,
+        'subdivision_picture_id'=> 1,
     ];
 });
+
+$factory->define(App\Models\TypeLibrary::class, function (Faker $faker) {
+    return [
+        'name'=> $faker->text(rand(50, 100))
+    ];
+});
+
+$factory->define(App\Models\TypeNews::class, function (Faker $faker) {
+    return [
+        'name'=> $faker->text(rand(50, 100))
+    ];
+});
+
+$factory->define(App\Models\TypeProject::class, function (Faker $faker) {
+    return [
+        'name'=> $faker->text(rand(50, 100))
+    ];
+});
+
+$factory->define(App\Models\Utility::class, function (Faker $faker) {
+    return [
+        'content'=> $faker->text(rand(100, 100)),
+        'title'=> $faker->text(rand(100, 200))
+    ];
+});
+
