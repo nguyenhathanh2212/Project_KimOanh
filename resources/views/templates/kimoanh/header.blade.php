@@ -1,48 +1,81 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<head id="ctl00_Head1">
-  <title>
-   Thông điệp Tổng Giám Đốc
- </title>
- <meta name="description" content="Với những thành quả hiện có, Kim Oanh luôn ý thức sâu sắc rằng, thành công ngày hôm nay của Kim Oanh chính là nhờ vào sự tin tưởng, tín nhiệm và đồng hành của Quý đối tác, Quý khách hàng và toàn thể nhân viên Kim Oanh trong suốt thời gian qua." />
- <meta name="keywords" content="Thông điệp Tổng Giám Đốc" />
-
- <meta name="csrf-token" content="{{ csrf_token() }}">
-  {{ Html::script(asset('js/app.js')) }}
- <link rel="shortcut icon" type="image/x-icon" href="http://www.diaockimoanh.com.vn/App_Themes/Default/images/favicon.ico" />
- {{ Html::script(asset('templates/kimoanh/js/jquery.min.js')) }}
- {{ Html::script(asset('templates/kimoanh/js/swfobject.js')) }}
- {{ Html::script(asset('templates/kimoanh/js/admicro-core.min.js')) }}
- {{ Html::style(asset('templates/kimoanh/css/default.css')) }}
- {{ Html::style(asset('templates/kimoanh/css/in.css')) }}
- {{ Html::style(asset('templates/kimoanh/css/nivo-slider.css')) }}
- {{-- <script type="text/javascript" src="js/jquery.min.js"></script> --}}
- {{-- <script src="js/swfobject.js"></script> --}}
- <script src="http://www.diaockimoanh.com.vn/scripts/jquery.placeholder.min.js" type="text/javascript"></script>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- {{-- <script type="text/javascript" src="js/admicro-core.min.js"></script> --}}
- <script type="text/javascript">window.admicro_cpa_q = window.admicro_cpa_q || [];window.admicro_cpa_q.push({event: "retargeting", id: 4484});</script>
-
- {{-- <link href="css/default.css" type="text/css" rel="stylesheet" /> --}}
- {{-- <link href="css/in.css" type="text/css" rel="stylesheet" /> --}}
- {{-- <link href="css/nivo-slider.css" type="text/css" rel="stylesheet" /> --}}
- <link href="http://www.diaockimoanh.com.vn/Telerik.Web.UI.WebResource.axd?compress=1&amp;_TSM_CombinedScripts_=%3b%3bTelerik.Web.UI%2c+Version%3d2012.1.215.40%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3avi-VN%3ab29b07e8-2c1e-44e5-9e1b-59bb6459fb01%3a92753c09" type="text/css" rel="stylesheet" />
-</head>
-<body class="canhcam">
-  <form name="aspnetForm" method="post" action="#" id="aspnetForm">
-    <div id="ctl00_pnlWrap" class="ie6-home-in">
-      <header>
-        <div class="logo">
-          <a href='http://www.diaockimoanh.com.vn/'>{{ Html::image(asset('templates/kimoanh/images/vi_logo.png')) }}</a>
-        </div>
-        <div class="relative right">
-          <div class="login-wrap">
-          </div>
-        </div>
-        @include ('templates.kimoanh.navbar')
-      </header>
-      <div class="contaner">
-        @include ('templates.kimoanh.slider')
-
-      
+<html id="ctl00_Html1" lang="vi">
+    <head id="ctl00_Head1">
+        <title>
+            @yield ('title')
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta property="og:title" content="Tin tức" />
+        <meta property="og:site_name" content="Kim Oanh Real Estate" />
+        <meta itemprop="name" content="Tin tức" />
+        <link rel='next' href='/tin-tuc?pagenumber=2' />
+        <link rel="search" type="application/opensearchdescription+xml" title="Tìm kiếm Kim Oanh Real Estate" href="/SearchEngineInfo.ashx" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {{ Html::style(asset(config('setting.folder_css_public') . 'toolbar.css')) }}
+        {{ Html::style(asset(config('setting.folder_css_public') . 'jquery.fancybox.css')) }}
+        {{ Html::style(asset(config('setting.folder_css_public') . 'core.css')) }}
+        {{ Html::style(asset(config('setting.folder_css_public') . 'main.css')) }}
+        <link rel='shortcut icon' href='/Data/Sites/1/skins/default/favicon.ico' />
+    </head>
+    <body id="ctl00_Body" class="canhcam vi-vn">
+        <form method="post" action="/tin-tuc" id="aspnetForm">
+            <input type="hidden" name="__VIEWSTATEFIELDCOUNT" id="__VIEWSTATEFIELDCOUNT" value="3" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTk3NjY2MTIwNw9kFgJmD2QWAgIBDxYCHgRsYW5nBQJ2aRYCAgMPFgIeBWNsYXNzBQ1jYW5oY2FtIHZpLXZuFgICBQ8WAh4GYWN0aW9uBQgvdGluLXR1YxYQAg8PZBYCZg9kFgJmD2QWAmYPD2QWAh4Ic2l0ZXJvb3QFFmh0dHA6Ly9kaWFvY2tpbW9hbmgudm4WBAIBDw8WBh4HVG9vbFRpcAULVMOsbSBraeG6v20eCENzc0NsYXNzBQtzZWFyY2hpbnB1dB4EXyFTQgICFgQeDGF1dG9jb21wbGV0ZQUDb2ZmHgtwbGFjZWhvbGRlcgULVMOsbSBraeG6v21kAgUPFgIfAQUMc2VhcmNoYnV0dG9uZAIRDw8WBB8FBRNhbHRjb250ZW50MSBjbXN6b25lHwYCAmRkAhMPDxYGHwUFEGxlZnRzaWRlIGNtc3pvbmUfBgICHgdWaXNpYmxlaGRkAhUPDxYEHwUFEG1pZGRs" />
+            <input type="hidden" name="__VIEWSTATE1" id="__VIEWSTATE1" value="ZS1mdWxsd2lkdGgfBgICZGQCFw8PFgYfBQURcmlnaHRzaWRlIGNtc3pvbmUfBgICHwloZGQCGQ8PFgYfBQUTYWx0Y29udGVudDIgY21zem9uZR8GAgIfCWhkZAIfD2QWAmYPZBYCZg9kFgJmD2QWBAIBD2QWDgIBDxYCHwloFgICAQ8WAh4EVGV4dGVkAgMPFgIfCgU5PGgyIGNsYXNzPSJtb2R1bGUtdGl0bGUiPsSQxINuZyBrw70gbmjhuq1uIGLhuqNuIHRpbjwvaDI+ZAIFD2QWBAIBDw8WAh8KBQJUb2RkAgMPEGRkFgBkAgkPFgIfCWgWAgIFDxQrAAMPFgIeD1ZhbGlkYXRpb25Hcm91cAUuZm9ybXdpemFyZDEwM2Q4ZGRhLWRlM2YtNGQxNi1hNzY0LThlODE2NDYzYzkzMGQWAh4LQ3VycmVudEd1aWQFJDJmNGU4NWFhLTUwNWYtNDBlMy1iMDdkLTE4OGZlOTE4ZTRl" />
+            <input type="hidden" name="__VIEWSTATE2" id="__VIEWSTATE2" value="ZBQrAANkZGRkAg0PDxYEHwoFDTw8IFF1YXkgbOG6oWkfCWhkZAIPDw8WBB8LBS5mb3Jtd2l6YXJkMTAzZDhkZGEtZGUzZi00ZDE2LWE3NjQtOGU4MTY0NjNjOTMwHwoFBUfhu61pZGQCEQ8WAh4FdmFsdWUFBFjDs2FkAgMPZBYCAgEPFgIfCgUfQ8OhbSDGoW4gYuG6oW4gxJHDoyDEkcSDbmcga8O9LmQCJQ8PFgIfCWhkZBgBBR5jdGwwMCRGb3JtRGFuZ0t5JGN0bDAwJGNhcHRjaGEPFCsAAgUkMmY0ZTg1YWEtNTA1Zi00MGUzLWIwN2QtMTg4ZmU5MThlNGVkBgAAAAAAAAAAZA6BlzIhuT0iIr2LoRcYGwQuhhgk" />
+            <div class="fullpage">
+                <header>
+                    <div class="container">
+                        <div class="header-wrap">
+                            <div class="btn-showmenu">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </div>
+                            <div class="overlay"></div>
+                            <div class='sitelogo Module Module-135'>
+                                <div class='ModuleContent'>
+                                    <a href="/">
+                                        <img alt="" src="{{ config('setting.folder_image_public') }}/logo.png" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <nav class="menu">
+                                    <div class="menu-logo"></div>
+                                    <div class='menu-content Module Module-42'>
+                                        <div class='ModuleContent'>
+                                            <div class="menu-wrap">
+                                                <ul class="menu-link">
+                                                    <li><a href="/gioi-thieu" target="_self">Giới thiệu</a></li>
+                                                    <li><a href="/du-an/du-an-dang-trien-khai" target="_self">Dự án</a></li>
+                                                    <li class="active"><a href="/tin-tuc" target="_self">Tin tức</a></li>
+                                                    <li><a href="/thu-vien/du-an" target="_self">Thư viện</a></li>
+                                                    <li><a href="#" target="_self">Video</a></li>
+                                                    <li><a href="/tuyen-dung" target="_self">Tuyển dụng</a></li>
+                                                    <li><a href="/lien-he" target="_self">Liên hệ</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <div class='hotline Module Module-138'>
+                                    <div class='ModuleContent'>
+                                        <a href="tel:0988.12.12.12"><em class="material-icons">phone</em>0988.12.12.12</a>
+                                    </div>
+                                </div>
+                                <div class="search">
+                                    <div class="btn-search">
+                                        <i class="material-icons">search</i>
+                                    </div>
+                                    <div class='search-wrap Module Module-137'>
+                                        <div id='ctl00_TimKiem_ctl00_Search_pnlSearch' class='searchbox'>
+                                            <input onfocus="javascript:watermarkEnter(this, &#39;&#39;);" onblur="javascript:watermarkLeave(this, &#39;&#39;);" name="ctl00$TimKiem$ctl00$Search$txtSearch" type="text" id="ctl00_TimKiem_ctl00_Search_txtSearch" title="Tìm kiếm" class="searchinput" autocomplete="off" placeholder="Tìm kiếm" />
+                                            <button onclick="__doPostBack('ctl00$TimKiem$ctl00$Search$btnSearch','')" id="ctl00_TimKiem_ctl00_Search_btnSearch" class="searchbutton">
+                                                <i class="material-icons">search</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>

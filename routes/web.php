@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::get('s', [
-        'as' => 'testNews',
-        'uses' => 'HomeController@getLibrariesByType', 
-    ]);
+
+Route::get('/ss', function () {
+    return view('kimoanh.introduce.index');
+});
+Route::get('s', [
+    'as' => 'testNews',
+    'uses' => 'HomeController@getLibrariesByType', 
+]);

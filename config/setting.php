@@ -39,4 +39,7 @@ return [
     'processing' => 0,
     'delivering' => 1,
     'closed' => 2,
+    'folder_css_public' => 'templates/kimoanh/css/',
+    'folder_image_public' => 'templates/kimoanh/images/',
+    'folder_js_public' => 'templates/kimoanh/js/',
 ];
