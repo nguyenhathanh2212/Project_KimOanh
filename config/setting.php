@@ -42,4 +42,9 @@ return [
     'folder_css_public' => 'templates/kimoanh/css/',
     'folder_image_public' => 'templates/kimoanh/images/',
     'folder_js_public' => 'templates/kimoanh/js/',
+    'limit_top_news' => 5,
+    'limit_top_project' => 5,
+    'limit_top_library' => 3,
+    'new_image_default' => 'templates/kimoanh/images/news_default.jpg',
+    'project_image_default' => 'templates/kimoanh/images/project_image_default.jpg',
 ];

@@ -13,7 +13,8 @@ class Picture extends Model
     	'pictureable_id',
     	'pictureable_type'
     ];
-     public function pictureable()
+
+    public function pictureable()
     {
         return $this->morphTo();
     }

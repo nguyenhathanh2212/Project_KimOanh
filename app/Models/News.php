@@ -15,10 +15,21 @@ class News extends Model
     	'content'
     ];
     
-
-    public function typeNews(){
-        return $this->belongsTo("App\News", "type_id", "id");
+    public function typeNews()
+    {
+        return $this->belongsTo(TypeNews::class, 'type_id', 'id');
     }
     
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'pictureable');
+    }
+
+    public function getFirstPictureAttribute()
+    {
+        return $this->pictures()->count() ?
+            $this->pictures()->first()->name :
+            config('setting.new_image_default');
+    }
 }
 

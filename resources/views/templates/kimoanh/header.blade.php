@@ -11,10 +11,16 @@
         <link rel='next' href='/tin-tuc?pagenumber=2' />
         <link rel="search" type="application/opensearchdescription+xml" title="Tìm kiếm Kim Oanh Real Estate" href="/SearchEngineInfo.ashx" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        {{ Html::style(asset('css/app.css')) }}
+        {{ Html::script(asset('js/app.js')) }}
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
         {{ Html::style(asset(config('setting.folder_css_public') . 'toolbar.css')) }}
         {{ Html::style(asset(config('setting.folder_css_public') . 'jquery.fancybox.css')) }}
-        {{ Html::style(asset(config('setting.folder_css_public') . 'core.css')) }}
         {{ Html::style(asset(config('setting.folder_css_public') . 'main.css')) }}
+        {{ Html::style(asset(config('setting.folder_css_public') . 'core.css')) }}
         <link rel='shortcut icon' href='/Data/Sites/1/skins/default/favicon.ico' />
     </head>
     <body id="ctl00_Body" class="canhcam vi-vn">
