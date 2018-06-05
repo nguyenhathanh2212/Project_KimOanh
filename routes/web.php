@@ -12,9 +12,9 @@
 */
 
 Route::get('/ss', function () {
-    return view('kimoanh.introduce.index');
+    return view('kimoanh.index.index');
 });
-Route::get('s', [
-    'as' => 'testNews',
-    'uses' => 'HomeController@getLibrariesByType', 
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'HomeController@index', 
 ]);
