@@ -53,7 +53,9 @@
                                                 <ul class="menu-link">
                                                     <li><a href="/gioi-thieu" target="_self">Giới thiệu</a></li>
                                                     <li><a href="/du-an/du-an-dang-trien-khai" target="_self">Dự án</a></li>
-                                                    <li class="active"><a href="/tin-tuc" target="_self">Tin tức</a></li>
+                                                    <li class="active">
+                                                        <a href="{{ route('kimoanh.news.index') }}" target="_self">Tin tức</a>
+                                                    </li>
                                                     <li><a href="/thu-vien/du-an" target="_self">Thư viện</a></li>
                                                     <li><a href="#" target="_self">Video</a></li>
                                                     <li><a href="/tuyen-dung" target="_self">Tuyển dụng</a></li>

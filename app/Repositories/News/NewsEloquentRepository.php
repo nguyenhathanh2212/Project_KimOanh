@@ -8,18 +8,32 @@ use Auth;
 use DB;
 
 class NewsEloquentRepository extends EloquentRepository implements NewsInterface {
-	
-	public function getModel(){
-		return News::class;
-	}
+    
+    public function getModel(){
+        return News::class;
+    }
 
-	public function getAllNews(){
+    public function getAllNews(){
 
-		return $this->all();
-	}
+        return $this->all();
+    }
 
-	public function getNewsByType($type_id, $limit = 10, $sortBy = "id", $order = "DESC"){
-		if($type_id == null) return ;
-		return $this->model->where('type_id', $type_id)->orderBy($sortBy, $order)->limit($limit)->get();
-	}
+    public function getAllNewPaginate()
+    {
+        return $this->model->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_new'));
+    }
+
+    public function getNewsRelateds($typeNew, $news)
+    {
+        return $typeNew->news()
+            ->where('id', '<>', $news->id)
+            ->orderBy('created_at', 'DESC')
+            ->limit(config('setting.limit_top_news'))
+            ->get();
+    }
+
+    public function getNewsByType($type_id, $limit = 10, $sortBy = "id", $order = "DESC"){
+        if($type_id == null) return ;
+        return $this->model->where('type_id', $type_id)->orderBy($sortBy, $order)->limit($limit)->get();
+    }
 }
