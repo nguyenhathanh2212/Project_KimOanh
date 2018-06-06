@@ -11,10 +11,24 @@
 |
 */
 
-Route::get('/ss', function () {
-    return view('kimoanh.index.index');
-});
 Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index', 
 ]);
+
+Route::namespace('KimOanh')->group(function () {
+    Route::get('/tin-tuc', [
+        'as' => 'kimoanh.news.index',
+        'uses' => 'NewsController@index', 
+    ]);
+
+    Route::get('/tin-tuc/{name}.{id}', [
+        'as' => 'kimoanh.news.show',
+        'uses' => 'NewsController@show', 
+    ]);
+
+    Route::get('/tin-tuc/dettail/{name}.{id}', [
+        'as' => 'kimoanh.news.detail',
+        'uses' => 'NewsController@detail', 
+    ]);
+});

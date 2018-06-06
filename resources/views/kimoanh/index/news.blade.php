@@ -27,12 +27,12 @@
                                     <div class="col-12 col-lg-6">
                                         <div class="news-col big">
                                             <figure>
-                                                <a class="news-img" href="" target="_self" title="{{ $firstNew->title }}">
+                                                <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($firstNew->title), $firstNew->id]) }}" target="_self" title="{{ $firstNew->title }}">
                                                     <img src="{{ $firstNew->first_picture }}" alt="{{ $firstNew->title }}">
                                                 </a>
                                                 <figcaption>
                                                     <h3 class="news-name">
-                                                        <a href="" target="_self" title="{{ $firstNew->title }}">{{ $firstNew->title }}</a>
+                                                        <a href="{{ route('kimoanh.news.detail', [str_slug($firstNew->title), $firstNew->id]) }}" target="_self" title="{{ $firstNew->title }}">{{ $firstNew->title }}</a>
                                                     </h3>
                                                     <div class="news-des"><div style="text-align: justify;">{{ $firstNew->preview }}&nbsp;</div></div>
                                                 </figcaption>
@@ -46,12 +46,12 @@
                                                     <div class="col-12 col-md-6">
                                                         <div class="news-col">
                                                             <figure>
-                                                                <a class="news-img" href="" target="_self" title="{{ $news->title }}">
+                                                                <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($news->title), $news->id]) }}" target="_self" title="{{ $news->title }}">
                                                                     <img src="{{ $news->first_picture }}">
                                                                 </a>
                                                                 <figcaption>
                                                                     <h3 class="news-name">
-                                                                        <a href="" target="_self" title="{{$news->title }}">{{ $news->title }}</a>
+                                                                        <a href="{{ route('kimoanh.news.detail', [str_slug($news->title), $news->id]) }}" target="_self" title="{{$news->title }}">{{ $news->title }}</a>
                                                                     </h3>
                                                                 </figcaption>
                                                             </figure>

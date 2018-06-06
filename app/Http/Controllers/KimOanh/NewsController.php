@@ -4,19 +4,20 @@ namespace App\Http\Controllers\KimOanh;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\News\NewsEloquentReponsiory;
-use App\Repositories\Category\CategoryEloquentRepository;
+use App\Repositories\News\NewsInterface;
+use App\Repositories\TypeNews\TypeNewsInterface;
 
 class NewsController extends Controller
 {
+    protected $newsRepository;
+    protected $typeNewsRepository;
 
-    protected $newsReponsitory;
-    protected $categoryReponsitory;
-
-    public function __construct(NewsEloquentReponsiory $newsReponsitory, CategoryEloquentRepository $categoryReponsitory)
-    {
-        $this->newsReponsitory = $newsReponsitory;
-        $this->categoryReponsitory = $categoryReponsitory;
+    public function __construct(
+        NewsInterface $newsRepository,
+        TypeNewsInterface $typeNewsRepository
+    ) {
+        $this->newsRepository = $newsRepository;
+        $this->typeNewsRepository = $typeNewsRepository;
     }
     /**
      * Display a listing of the resource.
@@ -25,14 +26,13 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
         try{
-            $news = $this->newsReponsitory->all();
-            $cats = $this->categoryReponsitory->getSubCategories(2);
-            // dd($news);
-            return view('kimoanh.news.index', compact('news', 'cats'));
-        }catch(Eception $e){
+            $typeNews = $this->typeNewsRepository->getAllTopNews();
+            $news = $this->newsRepository->getAllNewPaginate();
 
+            return view('kimoanh.news.index', compact('typeNews', 'news'));
+        }catch(Eception $e){
+            return redirect()->name('404');
         }
 
     }
@@ -64,14 +64,17 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name, $id)
     {
-        //
-        $cats = $this->categoryReponsitory->getSubCategories(2);
-        $news = $this->newsReponsitory->find($id);
-        $relateNews = $this->newsReponsitory->getRelateNewsByNews($news);
-        // dd($news);
-        return view("kimoanh.news.detail", compact('news', 'cats', 'relateNews'));
+        try{
+            $typeNews = $this->typeNewsRepository->getAllTopNews();
+            $typeNew = $this->typeNewsRepository->find($id);
+            $news = $typeNew->paginateNews();
+
+            return view('kimoanh.news.index', compact('typeNews', 'typeNew', 'news'));
+        }catch(Eception $e){
+            return redirect()->name('404');
+        }
     }
 
     /**
@@ -106,5 +109,24 @@ class NewsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function detail($name, $id)
+    {
+        try{
+            $typeNews = $this->typeNewsRepository->getAllTopNews();
+            $news = $this->newsRepository->find($id);
+            $typeNew = $news->typeNews;
+            $newsRelateds = $this->newsRepository->getNewsRelateds($typeNew, $news);
+
+            return view('kimoanh.news.detail', compact([
+                'typeNews',
+                'typeNew',
+                'news',
+                'newsRelateds',
+            ]));
+        }catch(Eception $e){
+            return redirect()->name('404');
+        }
     }
 }

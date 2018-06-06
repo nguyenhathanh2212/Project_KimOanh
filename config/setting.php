@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin_404' => 'templates/admin/images/404.png',
+    'admin_404' => '/templates/admin/images/404.png',
     'userDefault' => false,
     'paginate' => 5,
     'slider_number' => 3,
@@ -10,7 +10,7 @@ return [
     'skip2' => 2,
     'skip3' => 3,
   
-    'file_upload' => 'templates/upload/',
+    'file_upload' => '/templates/upload/',
     'topSell' => 6,
     'rate' => 5,
     'rate_start' => 0,
@@ -39,12 +39,13 @@ return [
     'processing' => 0,
     'delivering' => 1,
     'closed' => 2,
-    'folder_css_public' => 'templates/kimoanh/css/',
-    'folder_image_public' => 'templates/kimoanh/images/',
-    'folder_js_public' => 'templates/kimoanh/js/',
+    'folder_css_public' => '/templates/kimoanh/css/',
+    'folder_image_public' => '/templates/kimoanh/images/',
+    'folder_js_public' => '/templates/kimoanh/js/',
     'limit_top_news' => 5,
     'limit_top_project' => 5,
     'limit_top_library' => 3,
-    'new_image_default' => 'templates/kimoanh/images/news_default.jpg',
-    'project_image_default' => 'templates/kimoanh/images/project_image_default.jpg',
+    'paginate_new' => 13,
+    'new_image_default' => '/templates/kimoanh/images/news_default.jpg',
+    'project_image_default' => '/templates/kimoanh/images/project_image_default.jpg',
 ];

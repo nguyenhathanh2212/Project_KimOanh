@@ -31,5 +31,10 @@ class News extends Model
             $this->pictures()->first()->name :
             config('setting.new_image_default');
     }
+
+    public function getDateAttribute()
+    {
+        return \Carbon\Carbon::parse($this->created_at)->format('d/m/Y');
+    }
 }
 

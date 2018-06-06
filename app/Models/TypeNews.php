@@ -21,6 +21,11 @@ class TypeNews extends Model
         return $this->hasMany(News::class, 'type_id', 'id')->limit(config('setting.limit_top_news'));
     }
 
+    public function paginateNews()
+    {
+        return $this->hasMany(News::class, 'type_id', 'id')->paginate(config('setting.paginate_new'));
+    }
+
     public function getNameCustomAttribute()
     {
         return ucfirst(str_limit($this->name, 20));
