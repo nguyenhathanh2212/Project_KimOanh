@@ -36,7 +36,7 @@ class Project extends Model
 
     public function utility()
     {
-        return $this->hasOne(Utility::class, 'project_id', 'id');
+        return $this->hasMany(Utility::class, 'project_id', 'id');
     }
 
     public function typeProject()

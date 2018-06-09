@@ -13,4 +13,9 @@ class Utility extends Model
     	'title',
     	'project_id'
     ];
+
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'pictureable');
+    }
 }
