@@ -1,6 +1,6 @@
 @extends('templates.kimoanh.master')
 @section('title')
-	News
+	Project
 @endsection
 @section('content')
 <div id="ctl00_divAlt1" class="altcontent1 cmszone">
