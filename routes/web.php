@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', [
-    'as' => 'home',
-    'uses' => 'HomeController@index', 
-]);
+Route::get('/admin', function(){
+    return View('admin.user.edit');
+});
 
 Route::namespace('KimOanh')->group(function () {
     Route::get('/tin-tuc', [
