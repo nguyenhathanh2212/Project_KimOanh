@@ -1,6 +1,6 @@
 @extends('templates.kimoanh.master')
 @section('title')
-    News
+    Project
 @endsection
 @push('styles')
 @endpush
