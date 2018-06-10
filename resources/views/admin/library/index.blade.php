@@ -1,62 +1,48 @@
 @extends('templates.admin.master')
+@section('title')
+Danh sách thư viện
+@endsection
 @section('content')
 
- <div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">General Elements</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <form role="form">
-              	                <!-- select -->
-                <div class="form-group">
-                  <label>Loại tin</label>
-                  <select class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Tiêu đề</label>
-                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Preview</label>
-                  <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Nội dung tin tức</label>
-                 <textarea id="editor1" class="ckeditor" name="editor1" rows="10" cols="80" >
-                    Nhập nội dung,có thể bao gồm ảnh....
-                </textarea>
-                </div>
-				        
-                <div class="form-group">
-                  <label for="exampleInputFile">Chọn ảnh</label>
-                  <input type="file" id="exampleInputFile">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Danh sách thư viện</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width='5%'>ID</th>
+              <th width='50%'>Tiêu đề</th>
+              <th width='30%'>Ảnh</th>
+              <th width='15%'>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>dfdddddddddddđf</td>
+              <td>
+                <img src="" alt="">
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary btn-info">Sửa</button>
+                <button type="button" class="btn btn-primary btn-danger">Xóa</button>
+              </td>
+            </tr>
+            
+          </tbody>
 
-                  <p class="help-block">Vui lòng chọn ảnh vào</p>
-                </div>
-                <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Thêm</button>
-              </div>
-              </form>
-            </div>
-            <!-- /.box-body -->
-          </div>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+</div>
+<!-- /.box -->
+
+
 @endsection
-@push('scripts')
-<script>
-  $(function () {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    // CKEDITOR.replace('editor1');
-    //bootstrap WYSIHTML5 - text editor
-    // $('.textarea').wysihtml5()
-  })
-</script>
-@endpush

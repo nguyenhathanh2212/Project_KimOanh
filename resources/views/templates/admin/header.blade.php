@@ -8,28 +8,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>
-       @yield('title') 
-   </title>
-   <!-- Tell the browser to be responsive to screen width -->
-   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-   <meta name="csrf-token" content="{{ csrf_token() }}">
-   {{ Html::style(asset(config('setting.folder_css_admin') . 'bootstrap.min.css')) }}
-   {{-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> --}}
-   <!-- Font Awesome -->
-   {{ Html::style(asset(config('setting.folder_css_admin') . 'font-awesome.min.css')) }}
-   {{-- <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> --}}
-   <!-- Ionicons -->
-   {{ Html::style(asset(config('setting.folder_css_admin') . 'ionicons.min.css')) }}
-   {{-- <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css"> --}}
-   <!-- Theme style -->
-   {{ Html::style(asset(config('setting.folder_css_admin') . 'AdminLTE.min.css')) }}
-   {{-- <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> --}}
-   {{ Html::style(asset(config('setting.folder_css_admin') . 'skin-blue.min.css')) }}
-   {{-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> --}}
+     @yield('title') 
+ </title>
+ <!-- Tell the browser to be responsive to screen width -->
+ <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+ <meta name="csrf-token" content="{{ csrf_token() }}">
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'bootstrap.min.css')) }}
+ {{-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> --}}
+ <!-- Font Awesome -->
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'font-awesome.min.css')) }}
+ {{-- <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> --}}
+ <!-- Ionicons -->
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'ionicons.min.css')) }}
+ {{-- <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css"> --}}
+ <!-- Theme style -->
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'AdminLTE.min.css')) }}
+ {{-- <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> --}}
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'skin-blue.min.css')) }}
+ {{-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> --}}
 
-   <!-- Google Font -->
-   <link rel="stylesheet"
-   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+ <!-- Google Font -->
+ <link rel="stylesheet"
+ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -158,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- The user image in the navbar-->
                             <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">PQV</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -166,25 +166,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
+                                    PQV
                                     <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
+
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
@@ -216,7 +202,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>PQV</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -240,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Optionally, you can add icons to the links -->
 
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>User</span>
+                    <a href="#"><i class="fa fa-user"></i> <span>User</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -253,7 +239,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Library</span>
+                <a href="#"><i class="fa fa-image"></i> <span>Library</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -264,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>News</span>
+                <a href="#"><i class="fa fa-newspaper-o"></i> <span>News</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -276,7 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Project</span>
+                <a href="#"><i class="fa fa-calendar-minus-o"></i> <span>Project</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

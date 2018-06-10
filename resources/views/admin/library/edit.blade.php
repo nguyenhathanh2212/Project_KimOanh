@@ -1,6 +1,6 @@
 @extends('templates.admin.master')
 @section('title')
-Thêm thư viện
+Sửa thư viện
 @endsection
 @section('content')
 
@@ -11,6 +11,7 @@ Thêm thư viện
   <!-- /.box-header -->
   <div class="box-body">
     <form role="form">
+
       <!-- text input -->
       <div class="form-group">
         <label>Title</label>
@@ -21,9 +22,14 @@ Thêm thư viện
         <input type="file" id="exampleInputFile">
 
         <p class="help-block">Vui lòng chọn ảnh vào</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">Xóa ảnh
+          </label>
+        </div>
       </div>
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Thêm</button>
+        <button type="submit" class="btn btn-primary">Sửa</button>
       </div>
     </form>
   </div>
