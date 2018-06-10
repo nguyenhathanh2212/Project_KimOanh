@@ -12,7 +12,7 @@
 */
 
 Route::get('/admin', function(){
-    return View('admin.login.register');
+    return View('admin.news.index');
 });
 
 Route::namespace('KimOanh')->group(function () {
