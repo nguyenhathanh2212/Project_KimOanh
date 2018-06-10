@@ -102,6 +102,40 @@
                 var wmctl00_TimKiem_ctl00_Search_txtSearch = document.getElementById('ctl00_TimKiem_ctl00_Search_txtSearch'); if(wmctl00_TimKiem_ctl00_Search_txtSearch){wmctl00_TimKiem_ctl00_Search_txtSearch.value = '';}
             </script>
             @stack('scripts')
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    if (!$('.news-index').is(':visible')) {
+                        $(document).on('click', 'a[href^="#"]', function (event) {
+                            event.preventDefault();
+
+                            $('html, body').animate({
+                                scrollTop: $($.attr(this, 'href')).offset().top
+                            }, 500);
+                        });
+                    }
+
+                    $(window).bind('scroll', function() {
+                        var navHeight = 0;
+                        if ($(window).scrollTop() > navHeight) {
+                            $('header').addClass('fixed-header');
+                        } else {
+                            $('header').removeClass('fixed-header');
+                        }
+                    });
+
+                    $('header').on('click', '.btn-showmenu', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        $('.overlay').css('display', 'block');
+                        $('.menu').addClass('open');
+                    });
+
+                    $(document).click(function() {
+                        $('.overlay').hide();
+                        $('.menu').removeClass('open');
+                    });
+                });
+            </script>
         </form>
     </body>
 </html>

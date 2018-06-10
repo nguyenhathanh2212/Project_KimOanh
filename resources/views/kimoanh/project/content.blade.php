@@ -8,9 +8,11 @@
                         <div class="page-nav">
                         <div class="btn-showtab"></div>
                             <ul class="home-tab">
-                                <li class="nav-item active"><a class="nav-link active" href="/du-an/du-an-dang-trien-khai" target="_self">Dự án đang triển khai</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/du-an/du-an-da-hoan-thanh" target="_self">Dự án đã hoàn thành</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/du-an/du-an-sap-trien-khai" target="_self">Dự án sắp triển khai</a></li>
+                                @foreach ($typeProjects as $item)
+                                    <li class="nav-item {{ $typeProject == $item ? 'active' : '' }}">
+                                        <a class="nav-link {{ $typeProject == $item ? 'active' : '' }}" href="{{ route('kimoanh.project.show', [str_slug($item->name), $item->id]) }}" target="_self">{{ $item->name_custom }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -21,60 +23,79 @@
                             <div class="row">
                                 <div class="col-12 col-lg-8">
                                     <div class="row">
+                                        @php
+                                            $firstProject = $projects->first();
+                                        @endphp
                                         <div class="col-12">
                                             <div class="project-col big">
                                                 <figure>
-                                                    <a class="project-img" href="/du-an/du-an-dang-trien-khai/khu-do-thi-mega-city-2-1">
-                                                        <img src="{{ config('setting.folder_image_public') }}Data/Sites/1/media/du_an/cm/cm1-1.jpg" alt="Khu đô thị Mega City 2">
+                                                    <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($firstProject->title), $firstProject->id]) }}">
+                                                        <img src="{{ $firstProject->first_picture }}">
                                                     </a>
                                                     <figcaption>
                                                         <h3 class="project-name">
-                                                            <a href="/du-an/du-an-dang-trien-khai/khu-do-thi-mega-city-2-1" target="_self">Khu đô thị Mega City 2
+                                                            <a href="{{ route('kimoanh.project.detail', [str_slug($firstProject->title), $firstProject->id]) }}" target="_self">{{ $firstProject->title }}
                                                             </a>
                                                         </h3>
                                                     </figcaption>
                                                 </figure>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="project-col">
-                                                <figure>
-                                                    <a class="project-img" href="#">
-                                                        <img src="{{ config('setting.folder_image_public') }}Data/Sites/1/media/du_an/cm/cm2.jpg" alt="Bến Cát Center City 2">
-                                                    </a>
-                                                    <figcaption>
-                                                        <h3 class="project-name">
-                                                            <a href="#" target="_self">Bến Cát Center City 2
-                                                            </a>
-                                                        </h3>
-                                                    </figcaption>
-                                                </figure>
+
+                                        @foreach ($projects->slice(1)->take(2) as $item)
+                                            <div class="col-12 col-md-6">
+                                                <div class="project-col">
+                                                    <figure>
+                                                        <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
+                                                            <img src="{{ $item->first_picture }}">
+                                                        </a>
+                                                        <figcaption>
+                                                            <h3 class="project-name">
+                                                                <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}
+                                                                </a>
+                                                            </h3>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="project-col">
-                                                <figure>
-                                                    <a class="project-img" href="/du-an/du-an-dang-trien-khai/golden-center-city-3">
-                                                        <img src="{{ config('setting.folder_image_public') }}Data/Sites/1/media/du_an/cm/cm3.jpg" alt="Golden Center City 3">
-                                                    </a>
-                                                    <figcaption>
-                                                        <h3 class="project-name">
-                                                            <a href="/du-an/du-an-dang-trien-khai/golden-center-city-3" target="_self">Golden Center City 3
-                                                            </a>
-                                                        </h3>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            <div class="col-12 col-lg-4">
-                              <div class="row">
-                                <div class="col-12 col-md-6 col-lg-12">
-                                  <div class="project-col"><figure><a class="project-img" href="#"><img src="{{ config('setting.folder_image_public') }}Data/Sites/1/media/du_an/cm/cm4.jpg" alt="College Town 3"></a><figcaption><h3 class="project-name"><a href="#" target="_self">College Town 3</a></h3></figcaption></figure></div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12">
-                                  <div class="project-col high"><figure><a class="project-img" href="/du-an/du-an-dang-trien-khai/mega-city"><img src="{{ config('setting.folder_image_public') }}Data/Sites/1/media/du_an/cm/cm5-1.jpg" alt="Mega City"></a><figcaption><h3 class="project-name"><a href="/du-an/du-an-dang-trien-khai/mega-city" target="_self">Mega City</a></h3></figcaption></figure>         </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="row">
+                                        @php
+                                            $item = $projects->slice(3)->first();
+                                        @endphp
+                                        <div class="col-12 col-md-6 col-lg-12">
+                                            <div class="project-col">
+                                                <figure>
+                                                    <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
+                                                        <img src="{{ $item->first_picture }}">
+                                                    </a>
+                                                    <figcaption>
+                                                        <h3 class="project-name">
+                                                            <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
+                                                        </h3>
+                                                    </figcaption>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        @php
+                                            $item = $projects->slice(4)->first();
+                                        @endphp
+                                        <div class="col-12 col-md-6 col-lg-12">
+                                            <div class="project-col high">
+                                                <figure>
+                                                    <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
+                                                        <img src="{{ $item->first_picture }}" alt="Mega City">
+                                                    </a>
+                                                    <figcaption>
+                                                        <h3 class="project-name">
+                                                            <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
+                                                        </h3>
+                                                    </figcaption>
+                                                </figure>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -83,6 +104,11 @@
                     </div>
                 </div>
             </div>
-        </section>          
+            <div id="ctl00_mainContent_ctl01_ctl00_divPager" class="pages newspager">
+                <div class='modulepager'>
+                    {{ $projects->links() }}
+                </div>
+            </div> 
+        </section>         
     </div>
 </main>

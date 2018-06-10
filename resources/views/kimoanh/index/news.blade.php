@@ -1,4 +1,4 @@
-<div class='Module Module-142'>
+<div class='Module Module-142 news-index'>
     <div class='ModuleContent'>
         <section class="home-news">
             <div class="container">

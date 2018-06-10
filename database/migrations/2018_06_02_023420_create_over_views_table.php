@@ -15,7 +15,7 @@ class CreateOverViewsTable extends Migration
     {
         Schema::create('over_views', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('project_id');
             $table->longText('preview');
             $table->longText('position');
             $table->longText('investment');
@@ -24,6 +24,7 @@ class CreateOverViewsTable extends Migration
             $table->longText('utility_local');
             $table->longText('utility_link');
             $table->longText('contract');
+            $table->timestamps();
         });
     }
 

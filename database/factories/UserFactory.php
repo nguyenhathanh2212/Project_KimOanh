@@ -66,9 +66,8 @@ $factory->define(App\Models\Project::class, function (Faker $faker) {
         'title'=> $faker->text(rand(50, 100)),
         'preview'=> $faker->text(rand(50, 100)),
         'preview'=> $faker->text(rand(50, 100)),
-        'overview_id'=> 1,
+        'location_content' => $faker->text(rand(50, 100)),
         'video_id'=> 1,
-        'subdivision_picture_id'=> 1,
     ];
 });
 

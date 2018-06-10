@@ -49,6 +49,15 @@ return [
     'limit_top_project' => 5,
     'limit_top_library' => 3,
     'paginate_new' => 13,
+    'paginate_project' => 5,
+    'paginate_project' => 9,
     'new_image_default' => '/templates/kimoanh/images/news_default.jpg',
     'project_image_default' => '/templates/kimoanh/images/project_image_default.jpg',
+    'page' => [
+        'introduce' => 1,
+        'project' => 2,
+        'news' => 3,
+        'library' => 4,
+        'contact' => 5,
+    ]
 ];

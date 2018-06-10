@@ -69,4 +69,49 @@
 </main>
 @endsection
 @push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#slider-award').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+
+            $('.history-event').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+                centerPadding: '0px',
+                autoplay: false,
+                infinite: true,
+                arrows: false,
+                swipe: true,
+                verticalSwiping: true,
+                asNavFor: '.history-year'
+            }), $('.history-year').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                centerMode: true,
+                centerPadding: '0px',
+                autoplay: false,
+                infinite: true,
+                arrows: true,
+                swipe: false,
+                focusOnSelect: true,
+                verticalSwiping: true,
+                asNavFor: '.history-event'
+            });
+            
+            $(window).bind('scroll', function() {
+                var navHeight = $( window ).height() - 400;
+                
+                if ($(window).scrollTop() >= navHeight) {
+                    $('.home-tab').addClass('top-fixed');
+                } else {
+                    $('.home-tab').removeClass('top-fixed');
+                }
+            });
+        });
+    </script>
 @endpush

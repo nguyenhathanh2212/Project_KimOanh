@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Picture extends Model
 {
-    //
     protected $fillable = [
     	'id',
     	'name',
@@ -17,5 +16,10 @@ class Picture extends Model
     public function pictureable()
     {
         return $this->morphTo();
+    }
+
+    public function getNameAttribute()
+    {
+        return config('setting.folder_image_public') . $this->name;
     }
 }

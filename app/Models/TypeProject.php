@@ -26,4 +26,9 @@ class TypeProject extends Model
     {
         return ucfirst(str_limit($this->name, 20));
     }
+
+    public function paginateProjects()
+    {
+        return $this->hasMany(Project::class, 'type_id', 'id')->paginate(config('setting.paginate_project'));
+    }
 }

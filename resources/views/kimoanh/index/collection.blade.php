@@ -16,10 +16,3 @@
         </section>
     </div>
 </div>
-<script type="text/javascript">
-    $('#slider-library').slick({
-        centerMode: true,
-        centerPadding: '280px',
-        slidesToShow: 1,
-    });
-</script>

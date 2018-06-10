@@ -14,9 +14,10 @@ class Project extends Model
     	'type_id',
     	'title',
     	'preview',
-    	'overview_id',
         'video_id',
-    	'subdivision_picture_id'
+    	'subdivision_picture',
+        'location_content',
+        'location_picture',
     ];
     
     public function pictures()
@@ -31,12 +32,12 @@ class Project extends Model
 
     public function overview()
     {
-        return $this->hasOne(OverView::class, 'overview_id', 'id');
+        return $this->hasOne(OverView::class);
     }
 
-    public function utility()
+    public function utilities()
     {
-        return $this->hasMany(Utility::class, 'project_id', 'id');
+        return $this->hasMany(Utility::class);
     }
 
     public function typeProject()
@@ -49,10 +50,22 @@ class Project extends Model
         return ucfirst(str_limit($this->title, 50));
     }
 
+    public function getSubdivisionPictureCustomAttribute()
+    {
+        return $this->subdivision_picture ? $this->subdivision_picture : config('setting.project_image_default');
+    }
+
     public function getFirstPictureAttribute()
     {
         return $this->pictures()->count() ?
             $this->pictures()->first()->name :
             config('setting.project_image_default');
+    }
+
+    public function getFirstVideoAttribute()
+    {
+        return $this->videos()->count() ?
+            $this->videos()->first()->name :
+            'https://www.youtube.com/embed/0d6ypgW96ZI';
     }
 }
