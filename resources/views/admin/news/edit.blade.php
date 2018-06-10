@@ -34,17 +34,23 @@ Sửa tin tức
     <textarea id="editor1" class="ckeditor" name="editor1" rows="10" cols="80">
       This is my textarea to be replaced with CKEditor.
     </textarea>
+     <div class="form-group">
+      <label>Ảnh hiện tại</label><br>
+      <img src="{{ config('setting.new_image_default') }}" alt="" width="200">
+      <div class="checkbox">
+          <label>
+            <input type="checkbox">Xóa ảnh
+          </label>
+        </div>
+    </div>
     <div class="form-group">
-      <label for="exampleInputFile">Chọn ảnh</label>
+      <label for="exampleInputFile">Chọn ảnh thay thế</label>
       <input type="file" id="exampleInputFile">
 
       <p class="help-block">Vui lòng chọn ảnh vào</p>
       <div class="box-footer">
         <button type="submit" class="btn btn-primary">Sửa</button>
       </div>
-    </div>
-    <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Sửa</button>
     </div>
   </form>
 </div>

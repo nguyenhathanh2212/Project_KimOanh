@@ -18,15 +18,20 @@ Sửa thư viện
         <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleInputFile">Chọn ảnh</label>
-        <input type="file" id="exampleInputFile">
-
-        <p class="help-block">Vui lòng chọn ảnh vào</p>
+        <label>Ảnh hiện tại</label><br>
+        <img src="{{ config('setting.new_image_default') }}" alt="" width="200">
         <div class="checkbox">
           <label>
             <input type="checkbox">Xóa ảnh
           </label>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">Chọn ảnh thay thế</label>
+        <input type="file" id="exampleInputFile">
+
+        <p class="help-block">Vui lòng chọn ảnh vào</p>
+        
       </div>
       <div class="box-footer">
         <button type="submit" class="btn btn-primary">Sửa</button>
