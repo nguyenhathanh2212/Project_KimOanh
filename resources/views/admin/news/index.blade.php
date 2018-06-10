@@ -21,7 +21,7 @@
                 </div>
                 <!-- text input -->
                 <div class="form-group">
-                  <label>Tiêu đề</label>
+                  <label>Title</label>
                   <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                 </div>
                 <div class="form-group">
