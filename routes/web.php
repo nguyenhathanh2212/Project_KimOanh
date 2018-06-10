@@ -12,7 +12,7 @@
 */
 
 Route::get('/admin', function(){
-    return View('admin.news.edit');
+    return View('admin.project.add');
 });
 
 Route::namespace('KimOanh')->group(function () {

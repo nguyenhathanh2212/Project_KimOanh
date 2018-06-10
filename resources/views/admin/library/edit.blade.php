@@ -14,7 +14,7 @@ Sửa thư viện
 
       <!-- text input -->
       <div class="form-group">
-        <label>Title</label>
+        <label>Tiêu đề</label>
         <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
       </div>
       <div class="form-group">

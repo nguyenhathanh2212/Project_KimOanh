@@ -24,11 +24,11 @@ Thêm tin tức
     </div>
     <!-- text input -->
     <div class="form-group">
-      <label>Title</label>
+      <label>Tiêu đề</label>
       <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
     </div>
     <div class="form-group">
-      <label>Preview</label>
+      <label>Sơ lược</label>
       <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
     </div>
     <textarea id="editor1" class="ckeditor" name="editor1" rows="10" cols="80">

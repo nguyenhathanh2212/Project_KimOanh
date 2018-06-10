@@ -22,7 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
  {{ Html::style(asset(config('setting.folder_css_admin') . 'ionicons.min.css')) }}
  {{-- <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css"> --}}
  <!-- Theme style -->
- {{ Html::style(asset(config('setting.folder_css_admin') . 'AdminLTE.min.css')) }}
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'AdminLTE.css')) }}
+ {{ Html::style(asset(config('setting.folder_css_admin') . 'mycss.css')) }}
  {{-- <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> --}}
  {{ Html::style(asset(config('setting.folder_css_admin') . 'skin-blue.min.css')) }}
  {{-- <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"> --}}
