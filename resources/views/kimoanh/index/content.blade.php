@@ -9,10 +9,3 @@
         @include ('kimoanh.index.partner')
     </div>
 </main>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#top-slider").slick({
-            dots: true
-        });
-    });
-</script>

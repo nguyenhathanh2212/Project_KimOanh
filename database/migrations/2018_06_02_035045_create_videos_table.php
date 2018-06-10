@@ -17,6 +17,7 @@ class CreateVideosTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->longText('name');
+            $table->string('project_id')->nullable();
         });
     }
 

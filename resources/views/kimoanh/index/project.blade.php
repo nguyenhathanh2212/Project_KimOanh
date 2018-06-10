@@ -13,12 +13,12 @@
                                 <div class="col-12">
                                     <div class="project-col big">
                                         <figure>
-                                            <a class="project-img" href="" target="_self" title="{{ $firstProject->title_custom }}">
+                                            <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($firstProject->title), $firstProject->id]) }}" target="_self" title="{{ $firstProject->title_custom }}">
                                                 <img src="{{ $firstProject->first_picture }}">
                                             </a>
                                             <figcaption>
                                                 <h3 class="project-name">
-                                                    <a target="_self" href="" title="{{ $firstProject->title_custom }}">{{ $firstProject->title_custom }}</a>
+                                                    <a target="_self" href="{{ route('kimoanh.project.detail', [str_slug($firstProject->title), $firstProject->id]) }}" title="{{ $firstProject->title_custom }}">{{ $firstProject->title_custom }}</a>
                                                 </h3>
                                             </figcaption>
                                         </figure>
@@ -28,12 +28,12 @@
                                     <div class="col-12 col-md-6">
                                         <div class="project-col">
                                             <figure>
-                                                <a class="project-img" href="#" target="_self" title="{{ $newProject->title_custom }}">
+                                                <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($newProject->title), $newProject->id]) }}" target="_self" title="{{ $newProject->title_custom }}">
                                                     <img src="{{ $newProject->first_picture }}" alt="{{ $newProject->title_custom }}">
                                                 </a>
                                                 <figcaption>
                                                     <h3 class="project-name">
-                                                        <a target="_self" href="#" title="{{ $newProject->title_custom }}">{{ $newProject->title_custom }}</a>
+                                                        <a target="_self" href="{{ route('kimoanh.project.detail', [str_slug($newProject->title), $newProject->id]) }}" title="{{ $newProject->title_custom }}">{{ $newProject->title_custom }}</a>
                                                     </h3>
                                                 </figcaption>
                                             </figure>
@@ -50,12 +50,12 @@
                                 <div class="col-12 col-md-6 col-lg-12">
                                     <div class="project-col">
                                         <figure>
-                                            <a class="project-img" href="#">
+                                            <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($newProject2->title), $newProject2->id]) }}">
                                                 <img src="{{ $newProject2->first_picture }}" alt="College Town 3">
                                             </a>
                                             <figcaption>
                                                 <h3 class="project-name">
-                                                    <a href="#" target="_self">{{ $newProject2->title_custom }}</a>
+                                                    <a href="{{ route('kimoanh.project.detail', [str_slug($newProject2->title), $newProject2->id]) }}" target="_self">{{ $newProject2->title_custom }}</a>
                                                 </h3>
                                             </figcaption>
                                         </figure>
@@ -69,12 +69,12 @@
                                 <div class="col-12 col-md-6 col-lg-12">
                                     <div class="project-col high">
                                         <figure>
-                                            <a class="project-img" href="">
+                                            <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($newProject3->title), $newProject3->id]) }}">
                                                 <img src="{{ $newProject3->first_picture }}" alt="{{ $newProject3->first_picture }}">
                                             </a>
                                             <figcaption>
                                                 <h3 class="project-name">
-                                                    <a href="" target="_self">{{ $newProject3->first_picture }}</a>
+                                                    <a href="{{ route('kimoanh.project.detail', [str_slug($newProject3->title), $newProject3->id]) }}" target="_self">{{ $newProject3->first_picture }}</a>
                                                 </h3>
                                             </figcaption>
                                         </figure>

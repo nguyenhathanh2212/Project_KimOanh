@@ -27,8 +27,33 @@ Route::namespace('KimOanh')->group(function () {
         'uses' => 'NewsController@show', 
     ]);
 
-    Route::get('/tin-tuc/dettail/{name}.{id}', [
+    Route::get('/tin-tuc/detail/{name}.{id}', [
         'as' => 'kimoanh.news.detail',
         'uses' => 'NewsController@detail', 
+    ]);
+
+    Route::get('/du-an/{name}.{id}', [
+        'as' => 'kimoanh.project.show',
+        'uses' => 'ProjectController@show', 
+    ]);
+
+    Route::get('/du-an/detail/{name}.{id}', [
+        'as' => 'kimoanh.project.detail',
+        'uses' => 'ProjectController@detail', 
+    ]);
+
+    Route::get('/thu-vien/{name}.{id}', [
+        'as' => 'kimoanh.library.show',
+        'uses' => 'LibraryController@show', 
+    ]);
+
+    Route::get('/gioi-thieu', [
+        'as' => 'kimoanh.introduce.index',
+        'uses' => 'IntroduceController@index', 
+    ]);
+
+    Route::get('/lien-he', [
+        'as' => 'kimoanh.contact.index',
+        'uses' => 'ContactController@index', 
     ]);
 });

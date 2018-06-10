@@ -33,15 +33,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $typeNews = $this->typeNewsRepository->getAllTopNews();
+        \Session::forget('page_current');
         $newProjects = $this->projectRepository->getNewProjects();
         $newLibraries = $this->libraryRepository->getTop3Libraries();
 
-        return view('kimoanh.index.index', compact(
-            'typeNews',
-            'newProjects',
-            'newLibraries')
-        );
+        return view('kimoanh.index.index', compact(['newProjects', 'newLibraries']));
     }
 
     // public function getAllNews(){

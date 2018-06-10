@@ -27,10 +27,11 @@ class NewsController extends Controller
     public function index()
     {
         try{
-            $typeNews = $this->typeNewsRepository->getAllTopNews();
+            \Session::put('page_current', config('setting.page.news'));
+            
             $news = $this->newsRepository->getAllNewPaginate();
 
-            return view('kimoanh.news.index', compact('typeNews', 'news'));
+            return view('kimoanh.news.index', compact('news'));
         }catch(Eception $e){
             return redirect()->name('404');
         }
@@ -67,11 +68,10 @@ class NewsController extends Controller
     public function show($name, $id)
     {
         try{
-            $typeNews = $this->typeNewsRepository->getAllTopNews();
-            $typeNew = $this->typeNewsRepository->find($id);
+            $typeNew = $this->typeNewsRepository->findOrFail($id);
             $news = $typeNew->paginateNews();
 
-            return view('kimoanh.news.index', compact('typeNews', 'typeNew', 'news'));
+            return view('kimoanh.news.index', compact('typeNew', 'news'));
         }catch(Eception $e){
             return redirect()->name('404');
         }
@@ -114,13 +114,11 @@ class NewsController extends Controller
     public function detail($name, $id)
     {
         try{
-            $typeNews = $this->typeNewsRepository->getAllTopNews();
-            $news = $this->newsRepository->find($id);
+            $news = $this->newsRepository->findOrFail($id);
             $typeNew = $news->typeNews;
             $newsRelateds = $this->newsRepository->getNewsRelateds($typeNew, $news);
 
             return view('kimoanh.news.detail', compact([
-                'typeNews',
                 'typeNew',
                 'news',
                 'newsRelateds',

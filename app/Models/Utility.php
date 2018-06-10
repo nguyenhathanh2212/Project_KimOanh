@@ -6,11 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Utility extends Model
 {
-    //
     protected $fillable = [
     	'id',
     	'content',
     	'title',
     	'project_id'
     ];
+
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'pictureable');
+    }
+
+    public function getFirstPictureAttribute()
+    {
+    	return $this->pictures()->count() ?
+            $this->pictures()->first()->name :
+            config('setting.project_image_default');
+    }
 }

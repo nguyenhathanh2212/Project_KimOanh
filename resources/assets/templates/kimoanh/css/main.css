@@ -7891,7 +7891,8 @@ header {
     -moz-transition: all, 0.5s;
     -ms-transition: all, 0.5s;
     -o-transition: all, 0.5s;
-    transition: all, 0.5s; }
+    transition: all, 0.5s;
+    z-index: 100;}
     @media (max-width: 1199.98px) {
       header .sitelogo {
         padding-top: 0;
