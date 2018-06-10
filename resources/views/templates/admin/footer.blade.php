@@ -99,6 +99,9 @@
 {{ Html::script(asset(config('setting.folder_js_admin') . 'bootstrap.min.js')) }}
 {{-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> --}}
 <!-- AdminLTE App -->
+
+<script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+{{ Html::script(asset(config('setting.folder_js_admin') . 'demo.js')) }}
 {{ Html::script(asset(config('setting.folder_js_admin') . 'adminlte.min.js')) }}
 {{-- <script src="dist/js/adminlte.min.js"></script> --}}
 
@@ -107,16 +110,17 @@
      user experience. -->
      <script>
   $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
+    // $('#example1').DataTable();
+    // $('#example2').DataTable({
+    //   'paging'      : true,
+    //   'lengthChange': false,
+    //   'searching'   : false,
+    //   'ordering'    : true,
+    //   'info'        : true,
+    //   'autoWidth'   : false
+    // })
   })
 </script>
+@stack('scripts')
 </body>
 </html>
