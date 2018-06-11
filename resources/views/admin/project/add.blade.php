@@ -34,7 +34,7 @@ Thêm tin tức
     <div class="form-group">
       <div class="box box-solid">
         <div class="box-header with-border">
-          <h3 class="box-title">Tổng quan</h3>
+          <h3 class="box-title">Nhập chi tiết thông tin tổng quan</h3>
           <div class="box-tools">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
@@ -89,15 +89,14 @@ Thêm tin tức
         <!-- /.box-body -->
       </div>
     </div>
-  </div>
-  <textarea id="editor1" class="ckeditor" name="editor1" rows="10" cols="80">
-    This is my textarea to be replaced with CKEditor.
-  </textarea>
+
   <div class="form-group">
     <label for="exampleInputFile">Chọn ảnh</label>
     <input type="file" id="exampleInputFile">
-
-    <p class="help-block">Vui lòng chọn ảnh vào</p>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">URL video</label>
+    <input type="text" id="exampleInputVideo">
   </div>
   <div class="box-footer">
     <button type="submit" class="btn btn-primary">Thêm</button>
