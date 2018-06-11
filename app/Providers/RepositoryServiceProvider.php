@@ -47,6 +47,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\TypeLibrary\TypeLibraryInterface::class,
             \App\Repositories\TypeLibrary\TypeLibraryEloquentRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\User\UserInterface::class,
+            \App\Repositories\User\UserEloquentRepository::class
+        );
        
     }
 }

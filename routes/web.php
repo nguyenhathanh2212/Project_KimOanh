@@ -11,8 +11,18 @@
 |
 */
 
-Route::get('/admin', function(){
-    return View('admin.project.add');
+Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/', function() {
+        return redirect()->route('admin.user.index');
+    });
+
+    Route::resource('user', 'UserController')->names('admin.user');
+
+    Route::resource('news', 'NewsController')->names('admin.news');
+
+    Route::resource('project', 'ProjectController')->names('admin.project');
+
+    Route::resource('library', 'LibraryController')->names('admin.library');
 });
 
 Route::namespace('KimOanh')->group(function () {
@@ -56,3 +66,7 @@ Route::namespace('KimOanh')->group(function () {
         'uses' => 'ContactController@index', 
     ]);
 });
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Auth::routes();
