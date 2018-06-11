@@ -51,6 +51,7 @@ return [
     'paginate_new' => 13,
     'paginate_project' => 5,
     'paginate_project' => 9,
+    'paginate_admin' => 10,
     'new_image_default' => '/templates/kimoanh/images/news_default.jpg',
     'project_image_default' => '/templates/kimoanh/images/project_image_default.jpg',
     'page' => [
@@ -59,5 +60,9 @@ return [
         'news' => 3,
         'library' => 4,
         'contact' => 5,
-    ]
+    ],
+    'admin' => [
+        'admin' => 1,
+        'user' => 0,
+    ],
 ];

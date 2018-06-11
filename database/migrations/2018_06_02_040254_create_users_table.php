@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('fullname');
+            $table->tinyInteger('admin')->default(config('setting.admin.user'));
             $table->rememberToken();
         });
     }
