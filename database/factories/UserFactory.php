@@ -96,3 +96,13 @@ $factory->define(App\Models\Utility::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Models\Contract::class, function (Faker $faker) {
+    return [
+        'name'=> $faker->text(rand(100, 100)),
+        'address'=> $faker->streetAddress,
+        'phone'=> $faker->tollFreePhoneNumber,
+        'hotline'=> $faker->tollFreePhoneNumber,
+        'email'=> $faker->email
+    ];
+});
+

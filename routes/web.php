@@ -23,6 +23,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
     Route::resource('project', 'ProjectController')->names('admin.project');
 
     Route::resource('library', 'LibraryController')->names('admin.library');
+
+    Route::resource('contract', 'ContractController')->names('admin.contract');
 });
 
 Route::namespace('KimOanh')->group(function () {

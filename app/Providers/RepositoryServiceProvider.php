@@ -27,30 +27,40 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\News\NewsInterface::class,
             \App\Repositories\News\NewsEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\TypeNews\TypeNewsInterface::class,
             \App\Repositories\TypeNews\TypeNewsEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\TypeProject\TypeProjectInterface::class,
             \App\Repositories\TypeProject\TypeProjectEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\Project\ProjectInterface::class,
             \App\Repositories\Project\ProjectEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\Library\LibraryInterface::class,
             \App\Repositories\Library\LibraryEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\TypeLibrary\TypeLibraryInterface::class,
             \App\Repositories\TypeLibrary\TypeLibraryEloquentRepository::class
         );
+
         $this->app->bind(
             \App\Repositories\User\UserInterface::class,
             \App\Repositories\User\UserEloquentRepository::class
         );
        
+       $this->app->bind(
+            \App\Repositories\Contract\ContractInterface::class,
+            \App\Repositories\Contract\ContractEloquentRepository::class
+        );
     }
 }
