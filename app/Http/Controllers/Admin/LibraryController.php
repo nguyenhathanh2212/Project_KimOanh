@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Library\LibraryInterface;
+use App\Repositories\TypeLibrary\TypeLibraryInterface;
 
 class LibraryController extends Controller
 {
     protected $libraryRepository;
+    protected $typeLibraryRepository;
 
-    public function __construct(LibraryInterface $libraryRepository)
-    {
+    public function __construct(
+        LibraryInterface $libraryRepository,
+        TypeLibraryInterface $typeLibraryRepository
+    ) {
         $this->libraryRepository = $libraryRepository;
+        $this->typeLibraryRepository = $typeLibraryRepository;
     }
 
 
@@ -39,7 +44,13 @@ class LibraryController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $typeLibrary = $this->typeLibraryRepository->all();
+
+            return view('admin.library.add', compact('typeLibrary'));
+        } catch (Exception $e) {
+            return redirect()->name('404');
+        }
     }
 
     /**

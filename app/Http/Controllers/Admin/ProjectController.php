@@ -5,15 +5,27 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Project\ProjectInterface;
+use App\Repositories\TypeProject\TypeProjectInterface;
+use DB;
+use Session;
+use Exception;
+use App\Traits\ProcessFile;
 
 class ProjectController extends Controller
 {
-    protected $projectRepository;
+    use ProcessFile;
 
-    public function __construct(ProjectInterface $projectRepository)
-    {
+    protected $projectRepository;
+    protected $typeProjectRepository;
+
+    public function __construct(
+        ProjectInterface $projectRepository,
+        TypeProjectInterface $typeProjectRepository
+    ) {
+        $this->typeProjectRepository = $typeProjectRepository;
         $this->projectRepository = $projectRepository;
     }
+
 
     /**
      * Display a listing of the resource.
@@ -23,7 +35,7 @@ class ProjectController extends Controller
     public function index()
     {
         try {
-            $projects = $this->projectRepository->paginate(config('setting.paginate_admin'));
+            $projects = $this->projectRepository->getAllProjectsPaginate();
 
             return view('admin.project.index', compact('projects'));
         } catch (Exception $e) {
@@ -38,7 +50,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $typeProjects = $this->typeProjectRepository->all();
+
+            return view('admin.project.add', compact('typeProjects'));
+        } catch (Exception $e) {
+            return redirect()->name('404');
+        }
     }
 
     /**
@@ -49,7 +67,27 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $message = '';
+
+            if (!$request->video_url && !$request->video_upload) {
+                $message = "Bạn chưa nhập video!";
+                throw new Exception("Error Processing Request", 1);
+            }
+
+            $this->projectRepository->createProject($request);
+
+            DB::commit();
+            $request->session()->flash('success', 'Thêm dự án thành công!');
+
+            return redirect()->route('admin.project.index');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $request->session()->flash('error', $message ? $message : 'Thêm dự án thất bại!');
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -71,7 +109,14 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $typeProjects = $this->typeProjectRepository->all();
+            $project = $this->projectRepository->findOrFail($id);
+
+            return view('admin.project.edit', compact('typeProjects', 'project'));
+        } catch (Exception $e) {
+            return redirect()->name('404');
+        }
     }
 
     /**
@@ -83,7 +128,19 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $this->projectRepository->updateProject($request, $id);
+
+            DB::commit();
+            $request->session()->flash('success', 'Sửa dự án thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $request->session()->flash('error', 'Sửa dự án thất bại!');
+        }
+
+        return redirect()->route('admin.project.index');
     }
 
     /**
@@ -94,6 +151,18 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $this->projectRepository->deleteProject($id);
+
+            DB::commit();
+            Session::flash('success', 'Xóa dự án thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            Session::flash('error', 'Xóa dự án thất bại!');
+        }
+
+        return redirect()->back();
     }
 }

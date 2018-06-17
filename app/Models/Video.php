@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class Video extends Model
 {
@@ -11,4 +12,9 @@ class Video extends Model
     	'name',
     	'project_id',
     ];
+
+    public function getNameCustomAttribute()
+    {
+    	return asset(Storage::url($this->attributes['name']));
+    }
 }

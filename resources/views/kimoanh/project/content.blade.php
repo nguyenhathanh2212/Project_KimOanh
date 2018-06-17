@@ -41,9 +41,34 @@
                                                 </figure>
                                             </div>
                                         </div>
-
-                                        @foreach ($projects->slice(1)->take(2) as $item)
-                                            <div class="col-12 col-md-6">
+                                        @if ($projects->slice(1)->take(2))
+                                            @foreach ($projects->slice(1)->take(2) as $item)
+                                                <div class="col-12 col-md-6">
+                                                    <div class="project-col">
+                                                        <figure>
+                                                            <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
+                                                                <img src="{{ $item->first_picture }}">
+                                                            </a>
+                                                            <figcaption>
+                                                                <h3 class="project-name">
+                                                                    <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}
+                                                                    </a>
+                                                                </h3>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="row">
+                                        @if ($projects->slice(3)->first())
+                                            @php
+                                                $item = $projects->slice(3)->first();
+                                            @endphp
+                                            <div class="col-12 col-md-6 col-lg-12">
                                                 <div class="project-col">
                                                     <figure>
                                                         <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
@@ -51,52 +76,32 @@
                                                         </a>
                                                         <figcaption>
                                                             <h3 class="project-name">
-                                                                <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}
-                                                                </a>
+                                                                <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
                                                             </h3>
                                                         </figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-4">
-                                    <div class="row">
-                                        @php
-                                            $item = $projects->slice(3)->first();
-                                        @endphp
-                                        <div class="col-12 col-md-6 col-lg-12">
-                                            <div class="project-col">
-                                                <figure>
-                                                    <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
-                                                        <img src="{{ $item->first_picture }}">
-                                                    </a>
-                                                    <figcaption>
-                                                        <h3 class="project-name">
-                                                            <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
-                                                        </h3>
-                                                    </figcaption>
-                                                </figure>
+                                        @endif
+                                        @if ($projects->slice(4)->first())
+                                            @php
+                                                $item = $projects->slice(4)->first();
+                                            @endphp
+                                            <div class="col-12 col-md-6 col-lg-12">
+                                                <div class="project-col high">
+                                                    <figure>
+                                                        <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
+                                                            <img src="{{ $item->first_picture }}" alt="Mega City">
+                                                        </a>
+                                                        <figcaption>
+                                                            <h3 class="project-name">
+                                                                <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
+                                                            </h3>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
-                                        @php
-                                            $item = $projects->slice(4)->first();
-                                        @endphp
-                                        <div class="col-12 col-md-6 col-lg-12">
-                                            <div class="project-col high">
-                                                <figure>
-                                                    <a class="project-img" href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}">
-                                                        <img src="{{ $item->first_picture }}" alt="Mega City">
-                                                    </a>
-                                                    <figcaption>
-                                                        <h3 class="project-name">
-                                                            <a href="{{ route('kimoanh.project.detail', [str_slug($item->title), $item->id]) }}" target="_self">{{ $item->title }}</a>
-                                                        </h3>
-                                                    </figcaption>
-                                                </figure>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

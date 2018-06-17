@@ -21,7 +21,7 @@ class Utility extends Model
     public function getFirstPictureAttribute()
     {
     	return $this->pictures()->count() ?
-            $this->pictures()->first()->name :
+            $this->pictures()->first()->name_custom :
             config('setting.project_image_default');
     }
 }

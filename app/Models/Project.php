@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\TypeProject;
 use App\Models\OverView;
 use App\Models\Utility;
+use Storage;
 
 class Project extends Model
 {
@@ -14,7 +15,6 @@ class Project extends Model
     	'type_id',
     	'title',
     	'preview',
-        'video_id',
     	'subdivision_picture',
         'location_content',
         'location_picture',
@@ -52,20 +52,25 @@ class Project extends Model
 
     public function getSubdivisionPictureCustomAttribute()
     {
-        return $this->subdivision_picture ? $this->subdivision_picture : config('setting.project_image_default');
+        return $this->subdivision_picture ? asset(Storage::url($this->subdivision_picture)) : config('setting.project_image_default');
+    }
+
+    public function getLocationPictureCustomAttribute()
+    {
+        return $this->subdivision_picture ? asset(Storage::url($this->subdivision_picture)) : config('setting.project_image_default');
     }
 
     public function getFirstPictureAttribute()
     {
         return $this->pictures()->count() ?
-            $this->pictures()->first()->name :
+            $this->pictures()->first()->name_custom :
             config('setting.project_image_default');
     }
 
     public function getFirstVideoAttribute()
     {
         return $this->videos()->count() ?
-            $this->videos()->first()->name :
+            $this->videos()->first()->name_custom :
             'https://www.youtube.com/embed/0d6ypgW96ZI';
     }
 }

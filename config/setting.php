@@ -65,4 +65,5 @@ return [
         'admin' => 1,
         'user' => 0,
     ],
+    'path_upload_picture' =>'public/upload'
 ];

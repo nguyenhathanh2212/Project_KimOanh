@@ -26,40 +26,44 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">
-                        @foreach ($news->slice(1)->take(4) as $item)
-                            <div class="col-12 col-md-6">
-                                <div class="news-col">
-                                    <figure>
-                                        <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">
-                                            <img src="{{ $item->first_picture }}">
-                                        </a>
-                                        <figcaption>
-                                            <h3 class="news-name">
-                                                <a href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">{{ $item->title }}</a>
-                                            </h3>
-                                        </figcaption>
-                                    </figure>
+                        @if ($news->slice(1)->take(4))
+                            @foreach ($news->slice(1)->take(4) as $item)
+                                <div class="col-12 col-md-6">
+                                    <div class="news-col">
+                                        <figure>
+                                            <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">
+                                                <img src="{{ $item->first_picture }}">
+                                            </a>
+                                            <figcaption>
+                                                <h3 class="news-name">
+                                                    <a href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">{{ $item->title }}</a>
+                                                </h3>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-                @foreach ($news->slice(5) as $item)
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="news-col">
-                            <figure>
-                                <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">
-                                    <img src="{{ $item->first_picture }}">
-                                </a>
-                                <figcaption>
-                                    <h3 class="news-name">
-                                        <a href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">{{ $item->title }}</a>
-                                    </h3>
-                                </figcaption>
-                            </figure>
+                @if ($news->slice(5))
+                    @foreach ($news->slice(5) as $item)
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="news-col">
+                                <figure>
+                                    <a class="news-img" href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">
+                                        <img src="{{ $item->first_picture }}">
+                                    </a>
+                                    <figcaption>
+                                        <h3 class="news-name">
+                                            <a href="{{ route('kimoanh.news.detail', [str_slug($item->title), $item->id]) }}" target="_self" title="{{ $item->title }}">{{ $item->title }}</a>
+                                        </h3>
+                                    </figcaption>
+                                </figure>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </section>
         <div id="ctl00_mainContent_ctl01_ctl00_divPager" class="pages newspager">

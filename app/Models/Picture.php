@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class Picture extends Model
 {
@@ -18,8 +19,8 @@ class Picture extends Model
         return $this->morphTo();
     }
 
-    public function getNameAttribute()
+    public function getNameCustomAttribute()
     {
-        return config('setting.folder_image_public') . $this->name;
+        return asset(Storage::url($this->attributes['name']));
     }
 }

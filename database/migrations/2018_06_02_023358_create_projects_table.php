@@ -19,7 +19,6 @@ class CreateProjectsTable extends Migration
             $table->integer('type_id');
             $table->longText('title');
             $table->longText('preview');
-            $table->integer('video_id');
             $table->string('subdivision_picture')->nullable();
             $table->string('location_content')->nullable();
             $table->string('location_picture')->nullable();

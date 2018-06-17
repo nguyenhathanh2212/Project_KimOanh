@@ -11,4 +11,20 @@ class UserEloquentRepository extends EloquentRepository implements UserInterface
         return User::class;
     }
 
+	public function createUser($data)
+	{
+		return $this->create($data);
+	}
+
+    public function deleteUser($id)
+    {
+    	return $this->delete($id);
+    }
+
+    public function updateUser($id, $data)
+    {
+    	$user = $this->model->findOrFail($id);
+
+    	return $user->update($data);
+    }
 }

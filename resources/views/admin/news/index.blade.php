@@ -10,6 +10,7 @@ Danh sách tin tức
             <div class="box-header">
                 <h3 class="box-title">Danh sách tin tức</h3>
             </div>
+            @include ('templates.admin.notice')
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -34,9 +35,13 @@ Danh sách tin tức
                                     <img height="50px" src="{{ $news->first_picture }}" alt="">
                                 </td>
                                 <td>
-                                    <a type="button" href="{{ route('admin.news.edit', $news->id) }}" class="btn btn-primary btn-info">Sửa</a>
-                                    <form method="delete" action="{{ route('admin.news.destroy', $news->id) }}" class="col-md-6">
-                                        <button type="submit" class="btn btn-primary btn-danger">Xóa</button>
+                                    <form method="get" action="{{ route('admin.news.edit', $news->id) }}" class="col-md-6">
+                                        <button type="submit" class="btn btn-primary btn-info">Sửa</button>
+                                    </form>
+                                    <form method="post" action="{{ route('admin.news.destroy', $news->id) }}" class="col-md-6">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?')" class="btn btn-primary btn-danger">Xóa</button>
                                     </form>
                                 </td>
                             </tr>

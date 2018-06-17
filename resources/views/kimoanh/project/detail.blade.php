@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-12 col-lg-7">
                                     <div class="project-img">
-                                        <img src="{{ $project->location_picture }}">
+                                        <img src="{{ $project->location_picture_custom }}">
                                     </div>
                                 </div>
                             </div>
@@ -97,17 +97,31 @@
                         <div class="project-content">
                             <section class="container">
                                 <div class="row">
-                                    <div class="col-12 col-lg-7 col-img">
-                                        <div class="project-img">
-                                            <img src="{{ $utility->first_picture }}" alt="Tiện ích">
+                                    @if ($loop->iteration % 2)
+                                        <div class="col-12 col-lg-7 col-img">
+                                            <div class="project-img">
+                                                <img src="{{ $utility->first_picture }}" alt="Tiện ích">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-lg-5 col-text">
-                                        <h2 class="page-title text-center">{{ $utility->title }}</h2>
-                                        <div class="content">
-                                            <div style="text-align: justify;">{{ $utility->content }}</div>
+                                        <div class="col-12 col-lg-5 col-text">
+                                            <h2 class="page-title text-center">{{ $utility->title }}</h2>
+                                            <div class="content">
+                                                <div style="text-align: justify;">{{ $utility->content }}</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @else 
+                                        <div class="col-12 col-lg-5 col-text">
+                                            <h2 class="page-title text-center">{{ $utility->title }}</h2>
+                                            <div class="content">
+                                                <div style="text-align: justify;">{{ $utility->content }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-7 col-img">
+                                            <div class="project-img">
+                                                <img src="{{ $utility->first_picture }}" alt="Tiện ích">
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </section>
                         </div>
@@ -136,8 +150,8 @@
                             <div class="row">
                                 @foreach ($project->pictures as $picture)
                                     <div class="col-6 col-md-3">
-                                        <a class="img" data-fancybox="album1" href="{{ $picture->name }}" title="">
-                                            <img src="{{ $picture->name }}" alt="">
+                                        <a class="img" data-fancybox="album1" href="{{ $picture->name_custom }}" title="">
+                                            <img src="{{ $picture->name_custom }}" alt="">
                                         </a>
                                     </div>
                                 @endforeach
@@ -147,7 +161,7 @@
                 </section>
             </div>
         </div>
-        <section class="project-page project-section6" id="section6">
+        <section class="project-page project-section6" id="section7">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-8 col-xl-7">

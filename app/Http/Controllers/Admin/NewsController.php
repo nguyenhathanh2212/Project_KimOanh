@@ -5,14 +5,22 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\News\NewsInterface;
+use App\Repositories\TypeNews\TypeNewsInterface;
+use App\Http\Requests\Admin\NewsRequest;
+use DB;
+use Session;
+use Exception;
 
 class NewsController extends Controller
 {
     protected $newsRepository;
 
-    public function __construct(NewsInterface $newsRepository)
-    {
+    public function __construct(
+        NewsInterface $newsRepository,
+        TypeNewsInterface $typeNewsRepository
+    ) {
         $this->newsRepository = $newsRepository;
+        $this->typeNewsRepository = $typeNewsRepository;
     }
 
     /**
@@ -23,7 +31,7 @@ class NewsController extends Controller
     public function index()
     {
         try {
-            $newses = $this->newsRepository->paginate(config('setting.paginate_admin'));
+            $newses = $this->newsRepository->getAllNewPaginate();
 
             return view('admin.news.index', compact('newses'));
         } catch (Exception $e) {
@@ -38,7 +46,13 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $typeNews = $this->typeNewsRepository->all();
+
+            return view('admin.news.add', compact('typeNews'));
+        } catch (Exception $e) {
+            return redirect()->name('404');
+        }
     }
 
     /**
@@ -47,9 +61,21 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $this->newsRepository->createNews($request);
+
+            DB::commit();
+            $request->session()->flash('success', 'Thêm tin tức thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $request->session()->flash('error', 'Thêm tin tức thất bại!');
+        }
+
+        return redirect()->route('admin.news.index');
     }
 
     /**
@@ -71,7 +97,14 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $typeNews = $this->typeNewsRepository->all();
+            $news = $this->newsRepository->findOrFail($id);
+
+            return view('admin.news.edit', compact('news', 'typeNews'));
+        } catch (Exception $e) {
+            return redirect()->name('404');
+        }
     }
 
     /**
@@ -83,7 +116,19 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $this->newsRepository->updateNews($request, $id);
+
+            DB::commit();
+            $request->session()->flash('success', 'Sửa tin tức thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $request->session()->flash('error', 'Sửa tin tức thất bại!');
+        }
+
+        return redirect()->route('admin.news.index');
     }
 
     /**
@@ -94,6 +139,18 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $this->newsRepository->deleteNews($id);
+
+            DB::commit();
+            Session::flash('success', 'Xóa tin tức thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            Session::flash('error', 'Xóa tin tức thất bại!');
+        }
+
+        return redirect()->back();
     }
 }

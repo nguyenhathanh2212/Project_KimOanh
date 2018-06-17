@@ -50,7 +50,6 @@ $factory->define(App\Models\News::class, function (Faker $faker) {
 
 $factory->define(App\Models\OverView::class, function (Faker $faker) {
     return [
-        'preview'=> $faker->text(rand(50, 100)),
         'position'=> $faker->text(rand(50, 100)),
         'investment'=> $faker->text(rand(50, 100)),
         'area'=> $faker->text(rand(50, 100)),
@@ -67,7 +66,6 @@ $factory->define(App\Models\Project::class, function (Faker $faker) {
         'preview'=> $faker->text(rand(50, 100)),
         'preview'=> $faker->text(rand(50, 100)),
         'location_content' => $faker->text(rand(50, 100)),
-        'video_id'=> 1,
     ];
 });
 

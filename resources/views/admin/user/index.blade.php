@@ -10,6 +10,7 @@
             <div class="box-header">
                 <h3 class="box-title">Danh sách user</h3>
             </div>
+            @include ('templates.admin.notice')
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -30,9 +31,13 @@
                                 <td>{{ $user->fullname }}</td>
                                 <td>{{ $user->admin_custom }}</td>
                                 <td>
-                                    <a href="{{ route('admin.user.edit', $user->id) }}" type="button" class="btn btn-primary btn-info">Sửa</a>
-                                    <form method="delete" action="{{ route('admin.user.destroy', $user->id) }}" class="col-md-6">
-                                        <button type="submit" class="btn btn-primary btn-danger">Xóa</button>
+                                    <form method="get" action="{{ route('admin.user.edit', $user->id) }}" class="col-md-6">
+                                        <button type="submit" class="btn btn-primary btn-info">Sửa</button>
+                                    </form>
+                                    <form method="post" action="{{ route('admin.user.destroy', $user->id) }}" class="col-md-6">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?')" class="btn btn-primary btn-danger">Xóa</button>
                                     </form>
                                 </td>
                             </tr>

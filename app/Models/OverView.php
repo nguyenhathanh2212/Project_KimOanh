@@ -9,7 +9,6 @@ class OverView extends Model
     protected $fillable = [
         'id',
         'project_id',
-        'preview',
         'position',
         'investment',
         'area',

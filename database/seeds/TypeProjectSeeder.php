@@ -19,7 +19,6 @@ class TypeProjectSeeder extends Seeder
             for ($j = 1; $j <= 10; $j++) {
                 factory(App\Models\Project::class)->create([
                     'type_id' => $id,
-                    'video_id' => $x,
                 ])->each(function($project) {
                     factory(App\Models\OverView::class)->create([
                         'project_id' => $project->id,

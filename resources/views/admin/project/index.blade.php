@@ -10,6 +10,7 @@ Danh sách dự án
             <div class="box-header">
                 <h3 class="box-title">Danh sách dự án</h3>
             </div>
+            @include ('templates.admin.notice')
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -34,9 +35,13 @@ Danh sách dự án
                                     <img height="50px" src="{{ $project->first_picture }}" alt="">
                                 </td>
                                 <td>
-                                    <a type="button" href="{{ route('admin.project.edit', $project->id) }}" class="btn btn-primary btn-info">Sửa</a>
-                                    <form method="delete" action="{{ route('admin.project.destroy', $project->id) }}" class="col-md-6">
-                                        <button type="submit" class="btn btn-primary btn-danger">Xóa</button>
+                                    <form method="get" action="{{ route('admin.project.edit', $project->id) }}" class="col-md-6">
+                                        <button type="submit" class="btn btn-primary btn-info">Sửa</button>
+                                    </form>
+                                    <form method="post" action="{{ route('admin.project.destroy', $project->id) }}" class="col-md-6">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?')" class="btn btn-primary btn-danger">Xóa</button>
                                     </form>
                                 </td>
                             </tr>
