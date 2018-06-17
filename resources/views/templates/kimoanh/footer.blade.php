@@ -20,13 +20,13 @@
                                 <div class="col-12 col-lg-5 col-xl-6">
                                     <div class='footer-col Module Module-139'>
                                         <div class='ModuleContent'>
-                                            <div class="footer-title">Công ty CP TMDV &amp; XD Địa ốc Kim Oanh </div>
+                                            <div class="footer-title">{{$contract->name}}</div>
                                             <div class="about-us">
                                                 <ul>
-                                                    <li>Lô C, Đường Lê Lợi, Phường Hoà Phú, TP.Thủ Dầu Một, Bình Dương</li>
-                                                    <li>Tel: <a href="tel:(0274) 3554 999">(0274) 3554 999 </a>- Fax: (0274) 3567 960</li>
-                                                    <li>Email: <a href="mailto:info@diaockimoanh.com.vn">info@diaockimoanh.com.vn</a></li>
-                                                    <li>Hotline: <a href="tel:0988.12.12.12">0988.12.12.12</a></li>
+                                                    <li>{{$contract->address}}</li>
+                                                    <li>Tel: <a href="tel:{{$contract->hotline}}">{{$contract->hotline}}</a></li>
+                                                    <li>Email: <a href="mailto:info@ {{$contract->email}}">{{$contract->email}}</a></li>
+                                                    <li>Hotline: <a href="tel:{{$contract->phone}}">{{$contract->phone}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -75,9 +75,9 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 col-lg-6">
-                                    <div class="copyright">
+                                    {{-- <div class="copyright">
                                         Copyright &copy; 2018 Kim Oanh Real Estate. <a href="http://www.canhcam.vn/dich-vu"    target="_blank">Thiết kế website</a> bởi <a target="_blank" href="http://www.canhcam.vn">Cánh Cam</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class='Module Module-141'>

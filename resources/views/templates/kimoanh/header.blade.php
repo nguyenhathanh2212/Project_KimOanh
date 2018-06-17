@@ -131,7 +131,7 @@
                                 </nav>
                                 <div class='hotline Module Module-138'>
                                     <div class='ModuleContent'>
-                                        <a href="tel:0988.12.12.12"><em class="material-icons">phone</em>0988.12.12.12</a>
+                                        <a href="tel:{{$contract->phone}}"><em class="material-icons">phone</em>{{$contract->phone}}</a>
                                     </div>
                                 </div>
                                 <div class="search">

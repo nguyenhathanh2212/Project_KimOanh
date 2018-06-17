@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contract\ContractInterface;
+use DB;
 
 class ContractController extends Controller
 {
@@ -22,11 +23,9 @@ class ContractController extends Controller
 
     public function index()
     {
-        //
         try {
-            $contracts = $this->contractRepository->paginate(config('setting.paginate_admin'));
-
-            return view('admin.contract.index', compact('contracts'));
+            $contract = $this->contractRepository->getAll()->first();
+            return view('admin.contract.edit', compact('contract'));
         } catch (Exception $e) {
             return redirect()->name('404');
         }
@@ -85,6 +84,19 @@ class ContractController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            DB::beginTransaction();
+            
+            $this->contractRepository->updateContract($request, $id);
+
+            DB::commit();
+            $request->session()->flash('success', 'Sửa liên hệ thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $request->session()->flash('error', 'Sửa liên hệ thất bại!');
+        }
+
+        return redirect()->route('admin.contract.index');
     }
 
     /**
