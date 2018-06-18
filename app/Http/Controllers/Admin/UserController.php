@@ -171,6 +171,7 @@ class UserController extends Controller
             DB::commit();
             Session::flash('success', 'Xóa user thành công!');
         } catch (Exception $e) {
+            dd($e);
             DB::rollBack();
             Session::flash('error', $message ? $message : 'Xóa user thất bại!');
         }

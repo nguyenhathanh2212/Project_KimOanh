@@ -26,6 +26,6 @@ class User extends Authenticatable
 
     public function getAdminCustomAttribute()
     {
-        return $this->admin == config('setting.admin.amin') ? 'admin' : 'user';
+        return $this->attributes['admin'] == config('setting.admin.admin') ? 'admin' : 'user';
     }
 }
