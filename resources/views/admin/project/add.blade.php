@@ -31,14 +31,14 @@ Thêm dự án
                     <textarea class="form-control" required name="preview" rows="3" placeholder="Enter ..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Chọn ảnh</label>
-                    <input type="file" name="picture" required id="exampleInputFile">
+                    <label for="exampleInputFile">Hình ảnh liên quan</label>
+                    <input type="file" name="pictures[]" required multiple id="exampleInputFile">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputvideo">Video</label>
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="file" name="video_upload" id="exampleInputvideo">
+                            <input type="file" required name="video_upload" id="exampleInputvideo">
                         </div>
                         <div class="col-md-2">
                             Hoặc
@@ -60,6 +60,12 @@ Thêm dự án
                         </div>
                         <div class="box-body no-padding">
                             <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <div class="form-child">
+                                        <label for="exampleInputFile">Hình ảnh</label>
+                                        <input type="file" name="picture_overview" required id="exampleInputFile">
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="form-child">
                                         <label>Vị trí</label>
@@ -131,6 +137,9 @@ Thêm dự án
                                                 <label>Nội dung</label>
                                                 <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ..."></textarea>
                                             </div>
+                                        </div>
+                                        <div class="remove-utilities col-md-1 col-md-offset-11">
+                                            <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </li>
@@ -217,7 +226,7 @@ Thêm dự án
                                     <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ..."></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-1 col-md-offset-11">
+                            <div class="remove-utilities col-md-1 col-md-offset-11">
                                 <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
@@ -227,6 +236,14 @@ Thêm dự án
 
             $(document).on('click', '.btn-remove-utilities', function(event) {
                 event.preventDefault();
+
+                var utility = $('.list-utilities').find('.li-utility');
+
+                if (utility.length == 1) {
+                    alert('Tiện ích phải có ít nhất 1 phần tử');
+                    return false;
+                }
+
                 $(this).closest('.li-utility').remove();
             });
         })

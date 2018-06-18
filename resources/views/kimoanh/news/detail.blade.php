@@ -18,7 +18,7 @@
                                     {{ $news->preview }}&nbsp;
                                 </p>
                                 <p style="text-align: justify;">
-                                    {{ $news->content }}&nbsp;
+                                    {!! $news->content !!}&nbsp;
                                 </p>
                             </div>
                             <div class="share">

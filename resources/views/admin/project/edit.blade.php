@@ -35,16 +35,22 @@ Thêm tin tức
                 </div>
                 <div class="form-group">
                     <label>Ảnh hiện tại</label><br>
-                    <img src="{{ $project->first_picture }}" alt="" width="200">
-                    {{-- <div class="checkbox">
-                        <label>
-                            <input nametype="checkbox">Xóa ảnh
-                        </label>
-                    </div> --}}
+                    <div class="row">
+                        @foreach ($project->pictures as $picture)
+                            <div class="col-md-2">
+                                <img src="{{ $picture->name_custom }}" alt="" width="150">
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="delete_pictures[]" value="{{ $picture->id }}" type="checkbox">Xóa ảnh
+                                    </label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Chọn ảnh thay thế</label>
-                    <input type="file" name="picture" id="exampleInputFile">
+                    <label for="exampleInputFile">Chọn ảnh liên quan thay thế</label>
+                    <input type="file" name="pictures[]" multiple id="exampleInputFile">
                 </div>
                 <div class="form-group">
                     <label>Video hiện tại</label><br>
@@ -79,6 +85,16 @@ Thêm tin tức
                                 $overview = $project->overview;
                             @endphp
                             <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <div class="form-child">
+                                        <label>Ảnh hiện tại</label><br>
+                                        <img src="{{ $project->first_picture }}" alt="" width="200">
+                                    </div>
+                                    <div class="form-child">
+                                        <label for="exampleInputFile">Chọn ảnh thay thế</label>
+                                        <input type="file" name="picture_overview" id="exampleInputFile">
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="form-child">
                                         <label>Vị trí</label>
@@ -134,33 +150,36 @@ Thêm tin tức
                         <div class="box-body no-padding">
                             <ul class="nav nav-pills nav-stacked list-utilities">
                                 @foreach ($project->utilities as $utility)
-                                    <li class="li-utility">
+                                    <li class="li-utility" data-id="{{ $utility->id }}">
+                                        <input name="update_utilities[]" hidden value="{{ $utility->id }}" />
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-child">
                                                     <label>Tiêu đề</label>
-                                                    <input type="text" value="{{ $utility->title }}" required name="title_utilities[]" class="form-control" placeholder="Enter ..." />
+                                                    <input type="text" value="{{ $utility->title }}" required name="title_update_utilities[]" class="form-control" placeholder="Enter ..." />
                                                 </div>
                                                 <div class="form-child">
                                                     <div class="form-group">
-                                                        <label>Ảnh hiện tại</label><br>
-                                                        <img src="{{ $utility->first_picture }}" alt="" width="200">
+                                                        <div class="col-md-6">
+                                                            <label>Ảnh hiện tại</label><br>
+                                                            <img src="{{ $utility->first_picture }}" alt="" width="150">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="exampleInputFile">Chọn ảnh thay thế</label>
+                                                            <input type="file" name="picture_update_utilities[]"  id="exampleInputFile">
+                                                        </div>
                                                     </div>
-                                                    <label for="exampleInputFile">Chọn ảnh thay thế</label>
-                                                    <input type="file" name="picture_utilities[]"  id="exampleInputFile">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-child">
                                                     <label>Nội dung</label>
-                                                    <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ...">{{ $utility->content }}</textarea>
+                                                    <textarea class="form-control" required name="content_update_utilities[]" rows="4" placeholder="Enter ...">{{ $utility->content }}</textarea>
                                                 </div>
                                             </div>
-                                            @if ($loop->iteration != 1)
-                                                <div class="col-md-1 col-md-offset-11">
-                                                    <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
-                                                </div>
-                                            @endif
+                                            <div class="col-md-1 col-md-offset-11">
+                                                <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
+                                            </div>
                                         </div>
                                     </li>
                                 @endforeach
@@ -265,7 +284,17 @@ Thêm tin tức
 
             $(document).on('click', '.btn-remove-utilities', function(event) {
                 event.preventDefault();
-                $(this).closest('.li-utility').remove();
+                var utility = $('.list-utilities').find('.li-utility');
+
+                if (utility.length == 1) {
+                    alert('Tiện ích phải có ít nhất 1 phần tử');
+                    return false;
+                }
+                
+                var element = $(this).closest('.li-utility');
+                element.empty();
+                element.append(`<input name="delete_utilities[]" hidden value="${element.data('id')}" />`);
+                element.hide();
             });
         })
     </script>

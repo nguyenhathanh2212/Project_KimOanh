@@ -62,9 +62,7 @@ class Project extends Model
 
     public function getFirstPictureAttribute()
     {
-        return $this->pictures()->count() ?
-            $this->pictures()->first()->name_custom :
-            config('setting.project_image_default');
+        return $this->overview->first_picture;
     }
 
     public function getFirstVideoAttribute()

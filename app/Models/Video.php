@@ -15,6 +15,9 @@ class Video extends Model
 
     public function getNameCustomAttribute()
     {
-    	return asset(Storage::url($this->attributes['name']));
+    	$regex = '/^http+/';
+    	preg_match($regex, $this->attributes['name'], $matches);
+
+    	return !$matches ? asset(Storage::url($this->attributes['name'])) : $this->attributes['name'];
     }
 }

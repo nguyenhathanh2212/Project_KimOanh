@@ -6,6 +6,8 @@ use Session;
 use Auth;
 use DB;
 use App\Traits\ProcessFile;
+use App\Models\Picture;
+use App\Models\Utility;
 
 class ProjectEloquentRepository extends EloquentRepository implements ProjectInterface
 {
@@ -51,17 +53,20 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
             throw new Exception("Error Processing Request", 1);
         }
         //save picture and video
-        $picture = $request->picture ? $this->upLoadFile($request, 'picture', config('setting.path_upload_picture')) : '';
+        foreach ($request->pictures as $picture) {
+            $namePicture = $this->upLoadFile2($picture, config('setting.path_upload_picture'));
+            $project->pictures()->create(['name' => $namePicture]);
+        }
+
         $video = $request->video_upload ? $this->upLoadFile($request, 'video_upload', config('setting.path_upload_picture')) : $request->video_url;
 
-        $project->pictures()->create(['name' => $picture]);
         $project->videos()->create(['name' => $video]);
 
         // save utilities
         foreach ($request->title_utilities as $key => $value) {
             $utilityData = [
                 'title' => $value,
-                'content' => $request->title_utilities[$key],
+                'content' => $request->content_utilities[$key],
             ];
             $utility = $project->utilities()->create($utilityData);
             $pictureUtility = isset($request->picture_utilities[$key])
@@ -83,7 +88,9 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
             'contract',
         ]);
 
-        $project->overview()->create($dataOverView);
+        $overview = $project->overview()->create($dataOverView);
+        $pictureOverview = $request->picture_overview ? $this->upLoadFile($request, 'picture_overview', config('setting.path_upload_picture')) : '';
+        $overview->pictures()->create(['name' => $pictureOverview]);
 
         return $project;
     }
@@ -119,6 +126,14 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
             }
         }
 
+        $pictureOverviews = $project->overview->pictures;
+
+        if ($project->overview->pictures()->delete()) {
+            foreach ($pictureOverviews as $pictureOverview) {
+                $this->deleteFile($pictureOverview->name);
+            }
+        }
+
         $project->overview()->delete();
 
         return $project->delete();
@@ -144,14 +159,20 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
             $this->deleteFile($project->location_picture);    
         }
 
-        $project = $this->model->update($data);
-
         //update picture and video
-        if ($request->picture) {
-            $picture = $this->upLoadFile($request, 'picture', config('setting.path_upload_picture'));
-            $this->deleteFile($project->pictures->first()->name);
-            $project->pictures()->delete();
-            $project->pictures()->create(['name' => $picture]);
+        if ($request->delete_pictures) {
+            foreach ($request->delete_pictures as $id) {
+                $pictureDelete = Picture::findOrFail($id);
+                $this->deleteFile($pictureDelete->name);
+                $pictureDelete->delete();
+            }
+        }
+
+        if ($request->pictures) {
+            foreach ($request->pictures as $picture) {
+                $namePicture = $this->upLoadFile2($picture, config('setting.path_upload_picture'));
+                $project->pictures()->create(['name' => $namePicture]);
+            }
         }
 
         if ($request->video_upload) {
@@ -165,19 +186,52 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
         }
 
         // update utilities
-        foreach ($request->title_utilities as $key => $value) {
-            $utilityData = [
-                'title' => $value,
-                'content' => $request->title_utilities[$key],
-            ];
-            $utility = $project->utilities()->create($utilityData);
-            $pictureUtility = isset($request->picture_utilities[$key])
-                ? $this->upLoadFile2($request->picture_utilities[$key], config('setting.path_upload_picture')) : '';
+        //create new utiluties
+        if ($request->title_utilities) {
+            foreach ($request->title_utilities as $key => $value) {
+                $utilityData = [
+                    'title' => $value,
+                    'content' => $request->content_utilities[$key],
+                ];
+                $utility = $project->utilities()->create($utilityData);
+                $pictureUtility = isset($request->picture_utilities[$key])
+                    ? $this->upLoadFile2($request->picture_utilities[$key], config('setting.path_upload_picture')) : '';
 
-            if($pictureUtility) {
-                $utility->pictures()->create(['name' => $pictureUtility]);
+                if($pictureUtility) {
+                    $utility->pictures()->create(['name' => $pictureUtility]);
+                }
             }
         }
+        //delete utilities
+        if ($request->delete_utilities) {
+            foreach ($request->delete_utilities as $id) {
+                if ($id) {
+                    $utility = Utility::findOrFail($id);
+                    $this->deleteFile($utility->pictures->first()->name);
+                    $utility->pictures()->delete();
+                    $utility->delete();
+                }
+            }
+        }
+
+        // update utitlities
+        if ($request->update_utilities) {
+            foreach ($request->update_utilities as $key => $value) {
+                $utility = Utility::findOrFail($value);
+                $utilityData = [
+                    'title' => $request->title_update_utilities[$key],
+                    'content' => $request->content_update_utilities[$key],
+                ];
+                $utility = $utility->update($utilityData);
+
+                if (isset($request->picture_update_utilities[$key])) {
+                    $namePicture = $this->upLoadFile2($request->picture_update_utilities[$key], config('setting.path_upload_picture'));
+                    $this->deleteFile($utility->pictures->first()->name);
+                    $utility->pictures()->detete();
+                    $utility->pictures()->create(['name' => $namePicture]);
+                }
+            }
+        }        
 
         // save overview
         $dataOverView = $request->only([
@@ -190,8 +244,15 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
             'contract',
         ]);
 
-        $project->overview()->create($dataOverView);
+        $overview = $project->overview()->update($dataOverView);
 
-        return $project;
+        if ($request->picture_overview) {
+            $pictureOverview = $this->upLoadFile($request, 'picture_overview', config('setting.path_upload_picture'));
+            $this->deleteFile($project->pictures->first()->name);
+            $overview->pictures()->delete();
+            $overview->pictures()->create(['name' => $pictureOverview]);
+        }
+
+        return $project->update($data);
     }
 }

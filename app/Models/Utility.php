@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Utility extends Model
 {
     protected $fillable = [
-    	'id',
-    	'content',
-    	'title',
-    	'project_id'
+        'id',
+        'content',
+        'title',
+        'project_id'
     ];
 
     public function pictures()
@@ -20,7 +20,7 @@ class Utility extends Model
 
     public function getFirstPictureAttribute()
     {
-    	return $this->pictures()->count() ?
+        return $this->pictures()->count() ?
             $this->pictures()->first()->name_custom :
             config('setting.project_image_default');
     }

@@ -17,4 +17,16 @@ class OverView extends Model
         'utility_link',
         'contract'
     ];
+    
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'pictureable');
+    }
+    
+    public function getFirstPictureAttribute()
+    {
+        return $this->pictures()->count() ?
+            $this->pictures()->first()->name_custom :
+            config('setting.project_image_default');
+    }
 }
