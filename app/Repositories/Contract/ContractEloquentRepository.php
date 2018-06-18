@@ -18,4 +18,18 @@ class ContractEloquentRepository extends EloquentRepository implements ContractI
 		return $this->all();
 	}
 	
+	public function updateContract($request, $id)
+    {
+        $contract = $this->model->findOrFail($id);
+
+        $data = $request->only([
+            'name',
+            'address',
+            'phone',
+            'hotline',
+            'email',
+        ]);
+
+        return $contract->update($data);
+    }
 }

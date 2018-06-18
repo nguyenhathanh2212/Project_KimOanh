@@ -23,6 +23,9 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             '*', 'App\Http\ViewComposers\LibraryComposer'
         );
+        View::composer(
+            '*', 'App\Http\ViewComposers\ContractComposer'
+        );
     }
 
     /**

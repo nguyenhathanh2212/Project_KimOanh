@@ -16,6 +16,9 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
         return redirect()->route('admin.user.index');
     });
 
+
+    Route::resource('contract', 'ContractController')->names('admin.contract');
+
     Route::resource('user', 'UserController')->names('admin.user');
 
     Route::resource('news', 'NewsController')->names('admin.news');
