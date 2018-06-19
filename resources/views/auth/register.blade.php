@@ -1,4 +1,4 @@
-@extends('auth.layout')
+{{-- @extends('auth.layout')
 @section('content')
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -55,7 +55,7 @@
 </div>
 <!-- /.form-box -->
 </div>
-@endsection
+@endsection --}}
 
 {{-- @extends('layouts.app')
 

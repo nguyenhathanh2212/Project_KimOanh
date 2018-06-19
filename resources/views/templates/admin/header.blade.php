@@ -241,7 +241,7 @@
                             <li><a href="{{ route('admin.user.index') }}">Danh sách</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
+                   {{--  <li class="treeview">
                         <a href="#">
                             <i class="fa fa-image"></i> <span>Library</span>
                             <span class="pull-right-container">
@@ -252,7 +252,7 @@
                             <li><a href="{{ route('admin.library.create') }}">Thêm</a></li>
                             <li><a href="{{ route('admin.library.index') }}">Danh sách</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-newspaper-o"></i> <span>News</span>
