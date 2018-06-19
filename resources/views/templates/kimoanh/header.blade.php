@@ -38,7 +38,7 @@
                 position: fixed;
                 top: 0px;
                 margin-left: 0px;
-                width: 1304px;
+                width: 100%;
                 left: 0px;
                 background: #fff;
                 height: 60px;
@@ -65,11 +65,6 @@
         @stack('styles')
     </head>
     <body id="ctl00_Body" class="canhcam vi-vn">
-        <form method="post" action="/tin-tuc" id="aspnetForm">
-            <input type="hidden" name="__VIEWSTATEFIELDCOUNT" id="__VIEWSTATEFIELDCOUNT" value="3" />
-            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTk3NjY2MTIwNw9kFgJmD2QWAgIBDxYCHgRsYW5nBQJ2aRYCAgMPFgIeBWNsYXNzBQ1jYW5oY2FtIHZpLXZuFgICBQ8WAh4GYWN0aW9uBQgvdGluLXR1YxYQAg8PZBYCZg9kFgJmD2QWAmYPD2QWAh4Ic2l0ZXJvb3QFFmh0dHA6Ly9kaWFvY2tpbW9hbmgudm4WBAIBDw8WBh4HVG9vbFRpcAULVMOsbSBraeG6v20eCENzc0NsYXNzBQtzZWFyY2hpbnB1dB4EXyFTQgICFgQeDGF1dG9jb21wbGV0ZQUDb2ZmHgtwbGFjZWhvbGRlcgULVMOsbSBraeG6v21kAgUPFgIfAQUMc2VhcmNoYnV0dG9uZAIRDw8WBB8FBRNhbHRjb250ZW50MSBjbXN6b25lHwYCAmRkAhMPDxYGHwUFEGxlZnRzaWRlIGNtc3pvbmUfBgICHgdWaXNpYmxlaGRkAhUPDxYEHwUFEG1pZGRs" />
-            <input type="hidden" name="__VIEWSTATE1" id="__VIEWSTATE1" value="ZS1mdWxsd2lkdGgfBgICZGQCFw8PFgYfBQURcmlnaHRzaWRlIGNtc3pvbmUfBgICHwloZGQCGQ8PFgYfBQUTYWx0Y29udGVudDIgY21zem9uZR8GAgIfCWhkZAIfD2QWAmYPZBYCZg9kFgJmD2QWBAIBD2QWDgIBDxYCHwloFgICAQ8WAh4EVGV4dGVkAgMPFgIfCgU5PGgyIGNsYXNzPSJtb2R1bGUtdGl0bGUiPsSQxINuZyBrw70gbmjhuq1uIGLhuqNuIHRpbjwvaDI+ZAIFD2QWBAIBDw8WAh8KBQJUb2RkAgMPEGRkFgBkAgkPFgIfCWgWAgIFDxQrAAMPFgIeD1ZhbGlkYXRpb25Hcm91cAUuZm9ybXdpemFyZDEwM2Q4ZGRhLWRlM2YtNGQxNi1hNzY0LThlODE2NDYzYzkzMGQWAh4LQ3VycmVudEd1aWQFJDJmNGU4NWFhLTUwNWYtNDBlMy1iMDdkLTE4OGZlOTE4ZTRl" />
-            <input type="hidden" name="__VIEWSTATE2" id="__VIEWSTATE2" value="ZBQrAANkZGRkAg0PDxYEHwoFDTw8IFF1YXkgbOG6oWkfCWhkZAIPDw8WBB8LBS5mb3Jtd2l6YXJkMTAzZDhkZGEtZGUzZi00ZDE2LWE3NjQtOGU4MTY0NjNjOTMwHwoFBUfhu61pZGQCEQ8WAh4FdmFsdWUFBFjDs2FkAgMPZBYCAgEPFgIfCgUfQ8OhbSDGoW4gYuG6oW4gxJHDoyDEkcSDbmcga8O9LmQCJQ8PFgIfCWhkZBgBBR5jdGwwMCRGb3JtRGFuZ0t5JGN0bDAwJGNhcHRjaGEPFCsAAgUkMmY0ZTg1YWEtNTA1Zi00MGUzLWIwN2QtMTg4ZmU5MThlNGVkBgAAAAAAAAAAZA6BlzIhuT0iIr2LoRcYGwQuhhgk" />
             <div class="fullpage">
                 <header>
                     <div class="container">
@@ -139,11 +134,14 @@
                                         <i class="material-icons">search</i>
                                     </div>
                                     <div class='search-wrap Module Module-137'>
-                                        <div id='ctl00_TimKiem_ctl00_Search_pnlSearch' class='searchbox'>
-                                            <input onfocus="javascript:watermarkEnter(this, &#39;&#39;);" onblur="javascript:watermarkLeave(this, &#39;&#39;);" name="ctl00$TimKiem$ctl00$Search$txtSearch" type="text" id="ctl00_TimKiem_ctl00_Search_txtSearch" title="Tìm kiếm" class="searchinput" autocomplete="off" placeholder="Tìm kiếm" />
-                                            <button onclick="__doPostBack('ctl00$TimKiem$ctl00$Search$btnSearch','')" id="ctl00_TimKiem_ctl00_Search_btnSearch" class="searchbutton">
-                                                <i class="material-icons">search</i>
-                                            </button>
+                                        <div class='searchbox'>
+                                            <form action="{{ route('kimoanh.search.index') }}" method="get">
+                                                @csrf
+                                                <input type="text" id="search" title="Tìm kiếm" name="text" value="" class="searchinput" autocomplete="off" placeholder="Tìm kiếm" />
+                                                <button id="btn-search" type="submit" class="searchbutton">
+                                                    <i class="material-icons">search</i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

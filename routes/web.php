@@ -70,8 +70,21 @@ Route::namespace('KimOanh')->group(function () {
         'as' => 'kimoanh.contact.index',
         'uses' => 'ContactController@index', 
     ]);
+
+    Route::get('/tim-kiem', [
+        'as' => 'kimoanh.search.index',
+        'uses' => 'SearchController@search', 
+    ]);
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+Route::get('/404', function() {
+    return view('templates.layout.404');
+})->name('404');
+
+Route::get('/403', function() {
+    return view('templates.layout.403');
+})->name('403');
