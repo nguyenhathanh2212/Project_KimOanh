@@ -226,7 +226,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('admin.contract.index') }}">Xem thông tin</a></li>
+                            <li><a href="{{ route('admin.contract.index') }}">Thông tin liên hệ</a></li>
+                            <li><a href="{{ route('admin.contact.index') }}">Danh sách liên hệ</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

@@ -1,5 +1,28 @@
- .form-child {
+.form-child {
     margin-left: 37px;
     padding-bottom: 11px;
-  }
+}
+
+li.li-utility {
+    padding: 20px 20px 20px 0px;
+    border-radius: 5px;
+    margin: 2px !important;
+    background: #ecf0f5;
+}
+
+ul.nav.nav-pills.nav-stacked.list-utilities {
+    margin-bottom: 10px;
+}
+
+input.form-input-url {
+    width: 80%;
+    display: inline-block;
+}
+
+.nav.nav-pills.nav-stacked li {
+    padding: 20px 20px 20px 0px;
+    border-radius: 5px;
+    margin: 2px !important;
+    background: #ecf0f5;
+}
   

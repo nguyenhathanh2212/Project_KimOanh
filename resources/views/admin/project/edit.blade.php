@@ -50,7 +50,7 @@ Thêm tin tức
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Chọn ảnh liên quan thay thế</label>
-                    <input type="file" name="pictures[]" multiple id="exampleInputFile">
+                    <input type="file" name="pictures[]" multiple>
                 </div>
                 <div class="form-group">
                     <label>Video hiện tại</label><br>
@@ -60,14 +60,14 @@ Thêm tin tức
                     <label for="exampleInputvideo">Chọn video thay thế</label>
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="file" name="video_upload" id="exampleInputvideo">
+                            <input type="file" name="video_upload">
                         </div>
                         <div class="col-md-2">
                             Hoặc
                         </div>
                         <div class="col-md-5">
                             <label for="exampleInputFile">URL video</label>
-                            <input type="text" name="video_url" id="exampleInputVideo">
+                            <input class="form-control form-input-url" type="text" name="video_url">
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ Thêm tin tức
                                     </div>
                                     <div class="form-child">
                                         <label for="exampleInputFile">Chọn ảnh thay thế</label>
-                                        <input type="file" name="picture_overview" id="exampleInputFile">
+                                        <input type="file" name="picture_overview">
                                     </div>
                                 </li>
                                 <li>
@@ -153,6 +153,9 @@ Thêm tin tức
                                     <li class="li-utility" data-id="{{ $utility->id }}">
                                         <input name="update_utilities[]" hidden value="{{ $utility->id }}" />
                                         <div class="row">
+                                            <div class="col-md-1 col-md-offset-11">
+                                                <button type="button" class="btn btn-remove-utilities"><i class="fa fa-times"></i></button>
+                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-child">
                                                     <label>Tiêu đề</label>
@@ -166,7 +169,7 @@ Thêm tin tức
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="exampleInputFile">Chọn ảnh thay thế</label>
-                                                            <input type="file" name="picture_update_utilities[]"  id="exampleInputFile">
+                                                            <input type="file" name="picture_update_utilities[]" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -176,9 +179,6 @@ Thêm tin tức
                                                     <label>Nội dung</label>
                                                     <textarea class="form-control" required name="content_update_utilities[]" rows="4" placeholder="Enter ...">{{ $utility->content }}</textarea>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-1 col-md-offset-11">
-                                                <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
                                             </div>
                                         </div>
                                     </li>
@@ -206,7 +206,7 @@ Thêm tin tức
                                     </div>
                                     <div class="form-child">
                                         <label for="exampleInputFile">Chọn ảnh</label>
-                                        <input type="file" name="location_picture" id="exampleInputFile">
+                                        <input type="file" name="location_picture">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -231,7 +231,7 @@ Thêm tin tức
                             </div>
                             <div class="form-child">
                                 <label for="exampleInputFile">Chọn ảnh</label>
-                                <input type="file" name="subdivision_picture" id="exampleInputFile">
+                                <input type="file" name="subdivision_picture">
                             </div>
                         </div>
                     </div>
@@ -258,6 +258,9 @@ Thêm tin tức
                 $('.list-utilities').append(`
                     <li class="li-utility">
                         <div class="row">
+                            <div class="col-md-1 col-md-offset-11">
+                                <button type="button" class="btn btn-remove-utilities"><i class="fa fa-times"></i></button>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-child">
                                     <label>Tiêu đề</label>
@@ -265,7 +268,7 @@ Thêm tin tức
                                 </div>
                                 <div class="form-child">
                                     <label for="exampleInputFile">Chọn ảnh</label>
-                                    <input type="file" required name="picture_utilities[]"  id="exampleInputFile">
+                                    <input type="file" required name="picture_utilities[]" >
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -274,9 +277,6 @@ Thêm tin tức
                                     <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ..."></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-1 col-md-offset-11">
-                                <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
-                            </div>
                         </div>
                     </li>
                 `);
@@ -284,17 +284,21 @@ Thêm tin tức
 
             $(document).on('click', '.btn-remove-utilities', function(event) {
                 event.preventDefault();
-                var utility = $('.list-utilities').find('.li-utility');
+                var check = confirm('Bạn có chắc muốn xóa tiện ích này?');
 
-                if (utility.length == 1) {
-                    alert('Tiện ích phải có ít nhất 1 phần tử');
-                    return false;
+                if (check) {
+                    var utility = $('.list-utilities').find('.li-utility');
+
+                    if (utility.length == 1) {
+                        alert('Tiện ích phải có ít nhất 1 phần tử');
+                        return false;
+                    }
+                    
+                    var element = $(this).closest('.li-utility');
+                    element.empty();
+                    element.append(`<input name="delete_utilities[]" hidden value="${element.data('id')}" />`);
+                    element.hide();
                 }
-                
-                var element = $(this).closest('.li-utility');
-                element.empty();
-                element.append(`<input name="delete_utilities[]" hidden value="${element.data('id')}" />`);
-                element.hide();
             });
         })
     </script>

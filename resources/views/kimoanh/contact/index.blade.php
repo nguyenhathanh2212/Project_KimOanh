@@ -26,7 +26,7 @@ Contact
     </section>
 </div>
 <main class="main">
-
+    @include('templates.layout.notice')
     <div id="ctl00_divCenter" class="middle-fullwidth">
 
         <section class="contact-page">
@@ -80,43 +80,66 @@ Contact
                                     <div class='Module Module-93'>
                                         <div class='ModuleContent'>
                                             <div class="form-wrap">
-                                                <div id="ctl00_mainContent_ctl03_upContact">
-
-                                                    <div id="ctl00_mainContent_ctl03_pnlSend">
-
-                                                        <div class="form-row">
-                                                            <div class="form-group col-12 col-md-6">
-
-                                                                <input name="ctl00$mainContent$ctl03$txtName" type="text" maxlength="100" id="ctl00_mainContent_ctl03_txtName" class="form-control" placeholder="Họ tên" />
-
-                                                            </div>
-                                                            <div class="form-group col-12 col-md-6">
-
-                                                                <input name="ctl00$mainContent$ctl03$txtEmail" type="text" maxlength="255" id="ctl00_mainContent_ctl03_txtEmail" class="form-control" placeholder="Email" />
-
-                                                            </div>
-                                                            <div class="form-group col-12 col-md-6">
-
-                                                                <input name="ctl00$mainContent$ctl03$txtSubject" type="text" maxlength="255" id="ctl00_mainContent_ctl03_txtSubject" class="form-control" placeholder="Tiêu đề" />
-                                                            </div>
-                                                            <div class="form-group col-12 col-md-6">
-
-                                                                <input name="ctl00$mainContent$ctl03$txtPhone" type="text" maxlength="255" id="ctl00_mainContent_ctl03_txtPhone" class="form-control" placeholder="Điện thoại" />
-
-                                                            </div>
-                                                            <div class="form-group col-12">
-
-                                                                <textarea name="ctl00$mainContent$ctl03$txtMessage" rows="2" cols="20" id="ctl00_mainContent_ctl03_txtMessage" class="form-control" placeholder="Nội dung">
-                                                                </textarea>
-
+                                                <div>
+                                                    {!! Form::open(['url' => route('kimoanh.contact.store'), 'method' => 'post']) !!}
+                                                        <div id="ctl00_mainContent_ctl03_pnlSend">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-12 col-md-6">
+                                                                    {!! Form::text('name', '', ['placeholder' => 'Họ tên', 'class' => 'form-control']) !!}
+                                                                    <span class="error">
+                                                                        @if ($errors->has('name'))
+                                                                            <span>
+                                                                                <strong>{{ $errors->first('name') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
+                                                                <div class="form-group col-12 col-md-6">
+                                                                    {!! Form::text('email', '', ['placeholder' => 'Email', 'class' => 'form-control']) !!}
+                                                                    <span class="error">
+                                                                        @if ($errors->has('email'))
+                                                                            <span>
+                                                                                <strong>{{ $errors->first('email') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
+                                                                <div class="form-group col-12 col-md-6">
+                                                                    {!! Form::text('title', '', ['placeholder' => 'Tiêu đề', 'class' => 'form-control']) !!}
+                                                                    <span class="error">
+                                                                        @if ($errors->has('title'))
+                                                                            <span>
+                                                                                <strong>{{ $errors->first('title') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
+                                                                <div class="form-group col-12 col-md-6">
+                                                                    {!! Form::number('phone', '', ['placeholder' => 'Điện thoại', 'class' => 'form-control']) !!}
+                                                                    <span class="error">
+                                                                        @if ($errors->has('phone'))
+                                                                            <span>
+                                                                                <strong>{{ $errors->first('phone') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
+                                                                <div class="form-group col-12">
+                                                                    {!! Form::textarea('content', '', ['placeholder' => 'Nội dung', 'class' => 'form-control', 'rows' => 2, 'cols' => 20]) !!}
+                                                                    <span class="error">
+                                                                        @if ($errors->has('content'))
+                                                                            <span>
+                                                                                <strong>{{ $errors->first('content') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="frm-btn">
-                                                            <input type="submit" name="ctl00$mainContent$ctl03$btnSend" value="Gửi" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$mainContent$ctl03$btnSend&quot;, &quot;&quot;, true, &quot;Contact93&quot;, &quot;&quot;, false, false))" id="ctl00_mainContent_ctl03_btnSend" class="ct-button btn btn-default" />
+                                                            <input type="submit" value="Gửi"/>
                                                         </div>
-
-                                                    </div>
-
+                                                    {!! Form::close() !!}
                                                 </div>
                                             </div>
                                         </div>

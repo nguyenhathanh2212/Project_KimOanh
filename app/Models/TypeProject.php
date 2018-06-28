@@ -8,7 +8,6 @@ use App\Models\Project;
 class TypeProject extends Model
 {
     protected $fillable = [
-        'id',
         'name'
     ];
 

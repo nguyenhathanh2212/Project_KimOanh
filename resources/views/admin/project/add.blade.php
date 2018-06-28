@@ -32,20 +32,20 @@ Thêm dự án
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Hình ảnh liên quan</label>
-                    <input type="file" name="pictures[]" required multiple id="exampleInputFile">
+                    <input type="file" name="pictures[]" required multiple>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputvideo">Video</label>
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="file" required name="video_upload" id="exampleInputvideo">
+                            <input type="file" name="video_upload">
                         </div>
                         <div class="col-md-2">
                             Hoặc
                         </div>
                         <div class="col-md-5">
                             <label for="exampleInputFile">URL video</label>
-                            <input type="text" name="video_url" id="exampleInputVideo">
+                            <input class="form-control form-input-url" type="text" name="video_url">
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ Thêm dự án
                                 <li>
                                     <div class="form-child">
                                         <label for="exampleInputFile">Hình ảnh</label>
-                                        <input type="file" name="picture_overview" required id="exampleInputFile">
+                                        <input type="file" name="picture_overview" required>
                                     </div>
                                 </li>
                                 <li>
@@ -122,6 +122,9 @@ Thêm dự án
                             <ul class="nav nav-pills nav-stacked list-utilities">
                                 <li class="li-utility">
                                     <div class="row">
+                                        <div class="remove-utilities col-md-1 col-md-offset-11">
+                                            <button type="button" class="btn btn-remove-utilities"><i class="fa fa-times"></i></button>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-child">
                                                 <label>Tiêu đề</label>
@@ -129,7 +132,7 @@ Thêm dự án
                                             </div>
                                             <div class="form-child">
                                                 <label for="exampleInputFile">Chọn ảnh</label>
-                                                <input type="file" required name="picture_utilities[]"  id="exampleInputFile">
+                                                <input type="file" required name="picture_utilities[]" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -137,9 +140,6 @@ Thêm dự án
                                                 <label>Nội dung</label>
                                                 <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ..."></textarea>
                                             </div>
-                                        </div>
-                                        <div class="remove-utilities col-md-1 col-md-offset-11">
-                                            <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </li>
@@ -162,7 +162,7 @@ Thêm dự án
                                 <div class="col-md-4">
                                     <div class="form-child">
                                         <label for="exampleInputFile">Chọn ảnh</label>
-                                        <input type="file" required name="location_picture" id="exampleInputFile">
+                                        <input type="file" required name="location_picture">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -183,7 +183,7 @@ Thêm dự án
                         <div class="box-body no-padding">
                             <div class="form-child">
                                 <label for="exampleInputFile">Chọn ảnh</label>
-                                <input type="file" name="subdivision_picture" required id="exampleInputFile">
+                                <input type="file" name="subdivision_picture" required>
                             </div>
                         </div>
                     </div>
@@ -210,6 +210,9 @@ Thêm dự án
                 $('.list-utilities').append(`
                     <li class="li-utility">
                         <div class="row">
+                            <div class="remove-utilities col-md-1 col-md-offset-11">
+                                <button type="button" class="btn btn-remove-utilities"><i class="fa fa-times"></i></button>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-child">
                                     <label>Tiêu đề</label>
@@ -217,7 +220,7 @@ Thêm dự án
                                 </div>
                                 <div class="form-child">
                                     <label for="exampleInputFile">Chọn ảnh</label>
-                                    <input type="file" required name="picture_utilities[]"  id="exampleInputFile">
+                                    <input type="file" required name="picture_utilities[]" >
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -225,9 +228,6 @@ Thêm dự án
                                     <label>Nội dung</label>
                                     <textarea class="form-control" required name="content_utilities[]" rows="4" placeholder="Enter ..."></textarea>
                                 </div>
-                            </div>
-                            <div class="remove-utilities col-md-1 col-md-offset-11">
-                                <button type="button" onclick="return confirm('Bạn có chắc muốn xóa tiện ích này?')" class="btn btn-remove-utilities"><i class="fa fa-trash"></i></button>
                             </div>
                         </div>
                     </li>
@@ -237,14 +237,18 @@ Thêm dự án
             $(document).on('click', '.btn-remove-utilities', function(event) {
                 event.preventDefault();
 
-                var utility = $('.list-utilities').find('.li-utility');
+                var check = confirm('Bạn có chắc muốn xóa tiện ích này?');
 
-                if (utility.length == 1) {
-                    alert('Tiện ích phải có ít nhất 1 phần tử');
-                    return false;
+                if (check) {
+                    var utility = $('.list-utilities').find('.li-utility');
+
+                    if (utility.length == 1) {
+                        alert('Tiện ích phải có ít nhất 1 phần tử');
+                        return false;
+                    }
+
+                    $(this).closest('.li-utility').remove();
                 }
-
-                $(this).closest('.li-utility').remove();
             });
         })
     </script>

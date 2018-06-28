@@ -92,4 +92,9 @@ class NewsEloquentRepository extends EloquentRepository implements NewsInterface
 
         return $news->delete();
     }
+
+    public function search($request)
+    {
+        return $this->model->where('title', 'LIKE', '%' . $request->text . '%')->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_admin'));
+    }
 }

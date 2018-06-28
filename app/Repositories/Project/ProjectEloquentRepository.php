@@ -255,4 +255,9 @@ class ProjectEloquentRepository extends EloquentRepository implements ProjectInt
 
         return $project->update($data);
     }
+
+    public function search($request)
+    {
+        return $this->model->where('title', 'LIKE', '%' . $request->text . '%')->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_admin'));
+    }
 }

@@ -8,47 +8,22 @@ Danh sách dự án
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Danh sách dự án</h3>
+                <div class="col-md-6"><h3 class="box-title">Danh sách dự án</h3></div>
+                <div class="col-md-6">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control search-project" data-url="{{ route('admin.project.search') }}">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-info btn-flat">
+                                <i class="fa fa-fw fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
             </div>
             @include ('templates.admin.notice')
             <!-- /.box-header -->
-            <div class="box-body">
-                <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th width='2%'>ID</th>
-                            <th width='30%'>Tiêu đề</th>
-                            <th width='30%'>Sơ lược</th>
-                            <th width='10%'>Loại tin</th>
-                            <th width='10%'>Ảnh</th>
-                            <th width='20%'>Chức năng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($projects as $project)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $project->title }}</td>
-                                <td>{{ $project->preview }}</td>
-                                <td>{{ $project->typeProject->name }}</td>
-                                <td>
-                                    <img height="50px" src="{{ $project->first_picture }}" alt="">
-                                </td>
-                                <td>
-                                    <form method="get" action="{{ route('admin.project.edit', $project->id) }}" class="col-md-6">
-                                        <button type="submit" class="btn btn-primary btn-info">Sửa</button>
-                                    </form>
-                                    <form method="post" action="{{ route('admin.project.destroy', $project->id) }}" class="col-md-6">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?')" class="btn btn-primary btn-danger">Xóa</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {{ $projects->links() }}
+            <div class="box-body content-list-project">
+                @include ('admin.project.list-content')
             </div>
             <!-- /.box-body -->
         </div>
@@ -56,3 +31,5 @@ Danh sách dự án
 </div>
 <!-- /.box -->
 @endsection
+@push('scripts')
+@endpush

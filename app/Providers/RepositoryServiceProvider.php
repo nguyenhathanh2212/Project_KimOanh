@@ -58,9 +58,14 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\User\UserEloquentRepository::class
         );
        
-       $this->app->bind(
+        $this->app->bind(
             \App\Repositories\Contract\ContractInterface::class,
             \App\Repositories\Contract\ContractEloquentRepository::class
+        );
+       
+        $this->app->bind(
+            \App\Repositories\Contact\ContactInterface::class,
+            \App\Repositories\Contact\ContactEloquentRepository::class
         );
     }
 }

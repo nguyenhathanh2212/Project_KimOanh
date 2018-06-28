@@ -9986,3 +9986,20 @@ footer {
     float: right; }
 
 /*# sourceMappingURL=main.css.map */
+span.error {
+    color: #f00;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.show-notice {
+    position: fixed;
+    top: 150px;
+    right: 1px;
+    width: 30%;
+    z-index: 100;
+}
+
+.alert-error-profile {
+    color: #ff6473;
+}

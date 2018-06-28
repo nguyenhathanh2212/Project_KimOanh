@@ -8,7 +8,6 @@ use Storage;
 class Picture extends Model
 {
     protected $fillable = [
-    	'id',
     	'name',
     	'pictureable_id',
     	'pictureable_type'

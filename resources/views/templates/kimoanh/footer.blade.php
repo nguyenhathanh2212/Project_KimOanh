@@ -129,6 +129,7 @@
                     $('.overlay').hide();
                     $('.menu').removeClass('open');
                 });
+                $('.show-notice').delay(3000).fadeOut();
             });
         </script>
     </body>

@@ -7,9 +7,7 @@ use App\Models\Library;
 
 class TypeLibrary extends Model
 {
-    //
     protected $fillable = [
-    	'id',
     	'name'
     ];
 

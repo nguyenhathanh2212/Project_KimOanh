@@ -9,7 +9,6 @@ use App\Models\TypeLibrary;
 class Library extends Model
 {
     protected $fillable = [
-    	'id',
     	'title',
     	'type_id'
     ];

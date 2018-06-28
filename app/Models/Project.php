@@ -11,7 +11,6 @@ use Storage;
 class Project extends Model
 {
     protected $fillable = [
-    	'id',
     	'type_id',
     	'title',
     	'preview',

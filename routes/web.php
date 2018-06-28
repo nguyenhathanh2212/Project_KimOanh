@@ -23,11 +23,17 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
 
     Route::resource('news', 'NewsController')->names('admin.news');
 
+    Route::post('search-news', 'NewsController@search')->name('admin.news.search');
+
     Route::resource('project', 'ProjectController')->names('admin.project');
+
+    Route::post('search-project', 'ProjectController@search')->name('admin.project.search');
 
     Route::resource('library', 'LibraryController')->names('admin.library');
 
     Route::resource('contract', 'ContractController')->names('admin.contract');
+
+    Route::resource('contact', 'ContactController')->names('admin.contact');
 });
 
 Route::namespace('KimOanh')->group(function () {
@@ -69,6 +75,11 @@ Route::namespace('KimOanh')->group(function () {
     Route::get('/lien-he', [
         'as' => 'kimoanh.contact.index',
         'uses' => 'ContactController@index', 
+    ]);
+
+    Route::post('/add-lien-he', [
+        'as' => 'kimoanh.contact.store',
+        'uses' => 'ContactController@store', 
     ]);
 
     Route::get('/tim-kiem', [

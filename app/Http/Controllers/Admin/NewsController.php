@@ -153,4 +153,24 @@ class NewsController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        try {
+            if (!$request->ajax()) {
+                throw new Exception("Error Processing Request", 1);
+            }
+
+            $newses = $this->newsRepository->search($request);
+
+            return response()->json([
+                'success' => true,
+                'html' => view('admin.news.list-content', compact('newses'))->render(),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
+    }
 }

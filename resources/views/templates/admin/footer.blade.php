@@ -11,6 +11,7 @@
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
     {{ Html::script(asset(config('setting.folder_js_admin') . 'demo.js')) }}
     {{ Html::script(asset(config('setting.folder_js_admin') . 'adminlte.min.js')) }}
+    {{ Html::script(asset(config('setting.folder_js_admin') . 'script.js')) }}
     {{-- <script src="dist/js/adminlte.min.js"></script> --}}
     <script>
         $(function () {

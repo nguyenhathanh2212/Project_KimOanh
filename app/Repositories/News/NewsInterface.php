@@ -15,4 +15,6 @@ interface NewsInterface{
     public function updateNews($request, $id);
 
     public function deleteNews($id);
+    
+    public function search($request);
 }

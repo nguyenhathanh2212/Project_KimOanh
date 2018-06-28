@@ -167,4 +167,24 @@ class ProjectController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        try {
+            if (!$request->ajax()) {
+                throw new Exception("Error Processing Request", 1);
+            }
+
+            $projects = $this->projectRepository->search($request);
+
+            return response()->json([
+                'success' => true,
+                'html' => view('admin.project.list-content', compact('projects'))->render(),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
+    }
 }

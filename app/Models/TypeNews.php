@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class TypeNews extends Model
 {
     protected $fillable = [
-        'id',
         'name'
     ];
 

@@ -15,4 +15,6 @@ interface ProjectInterface {
     public function deleteProject($id);
 
     public function updateProject($request, $id);
+
+    public function search($request);
 }
