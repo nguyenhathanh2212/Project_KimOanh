@@ -137,7 +137,6 @@ class ProjectController extends Controller
             DB::commit();
             $request->session()->flash('success', 'Sửa dự án thành công!');
         } catch (Exception $e) {
-            dd($e);
             DB::rollBack();
             $request->session()->flash('error', 'Sửa dự án thất bại!');
         }
